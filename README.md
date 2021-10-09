@@ -5,6 +5,9 @@
 <a href="https://twitter.com/kensuke__19">
   <img src="https://img.shields.io/badge/-Twitter-1DA1F2.svg?logo=twitter&style=plastic">
 </a>
+<a href="https://qiita.com/Kensuke-N">
+  <img src="https://img.shields.io/badge/-Qiita-55C500.svg?logo=qiita&style=plastic">
+</a>
 <a href="mailto:infokensuke.n@gmail.com">
   <img src="https://img.shields.io/badge/-Gmail-D14836.svg?logo=gmail&style=plastic">
 </a>
