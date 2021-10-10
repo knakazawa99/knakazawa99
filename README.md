@@ -45,6 +45,7 @@
 - 深層学習を用いた洋ナシ果実の外観品質劣化要因の分類の研究、2020年信学会信越支部大会、Sep. 2020
 - 画像処理を用いた洋ナシ果実の外観汚損の検出の研究、2021年信学会総合大会、Mar. 2021
 - 統計的テクスチャ解析と勾配ブースティング決定木を用いた洋ナシ果実の外観汚損検出手法の提案、MIRU2021、July. 2021
+- [共著]Pear Flower Detection Using Deep Learning for Pollination, 5th edition of the International Conference of the International Commission of Agricultural Engineering (5th CIGR International Conference), May 2021.
 
 🥇 Reward
 - 令和2年度新潟大学工学部卒業研究優秀賞受賞
