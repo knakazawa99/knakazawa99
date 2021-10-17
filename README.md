@@ -34,7 +34,7 @@
 | 2021/10 <br>　〜　<br> 2021/12 |　楽天グループ株式会社　<br>(Internship)| SRE@Rakuma |
 | 2021/08 <br>　〜　<br> 2021/09 |　ビジョナル株式会社<br>(Internship)　| SoftwareEngineer@BizReach |
 | 2021/03 <br>　〜　<br> 2021/03 |　株式会社サイバーエージェント　<br>(Internship)|　ServerSideEngineer@Tapple |
-| 2020/02 ~ 2021/02 <br> 2021/04 ~ 2021/07 |　株式会社CRMセンター　<br>(Part Time Job)|　WebEngineer <br> (Infra -> Web Front) |
+| 2020/02 〜 2021/02 <br> 2021/04 〜 2021/07 |　株式会社CRMセンター　<br>(Part Time Job)|　WebEngineer <br> (Infra -> Web Front) |
 
 
 ## 🎆 Output & Reward
