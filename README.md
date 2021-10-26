@@ -64,7 +64,7 @@
 - Ruby
   - Ruby on Rails
 - Python
-  - Keras(background　is　TensorFlow)
+  - Keras(TensorFlow)
   - Flask
   - Celery
 - JavaScript
