@@ -54,6 +54,7 @@
 - [PHPerKaigi2021](https://speakerdeck.com/kensukenakazawa/nian-jing-yan-sitaxue-sheng-enziniagajin-si-ukoto)
 - [技育展2021](https://docs.google.com/presentation/d/1r765b00gs_wNbFQpCQYnZJQ8nF-YNtsvlXeLQ4Jwun0/edit?usp=sharing)
 
+<!-- ![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=KensukeNakazawa&count_private=true&theme=tokyonight) -->
 
 ## :shipit: Skils in Enginnering
 
