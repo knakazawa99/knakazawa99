@@ -8,6 +8,9 @@
 <a href="https://qiita.com/Kensuke-N">
   <img src="https://img.shields.io/badge/-Qiita-55C500.svg?logo=qiita&style=plastic">
 </a>
+<a href="https://www.linkedin.com/in/%E5%81%A5%E4%BB%8B-%E4%B8%AD%E6%BE%A4-407603224/">
+  <img src="https://img.shields.io/badge/-Linkedin-0077B5.svg?logo=linkedin&style=plastic">
+</a>
 <a href="mailto:infokensuke.n@gmail.com">
   <img src="https://img.shields.io/badge/-Gmail-D14836.svg?logo=gmail&style=plastic">
 </a>
@@ -43,7 +46,7 @@
 🦄 Output
 - 深層学習を用いた洋ナシ果実の外観品質劣化要因の分類の研究、2020年信学会信越支部大会、Sep. 2020
 - 画像処理を用いた洋ナシ果実の外観汚損の検出の研究、2021年信学会総合大会、Mar. 2021
-- 統計的テクスチャ解析と勾配ブースティング決定木を用いた洋ナシ果実の外観汚損検出手法の提案、MIRU2021、July. 2021
+- 統計的テクスチャ解析と勾配ブースティング決定木を用いた洋ナシ果実の外観汚損検出手法の提案、第24回　画像の認識・理解シンポジウム、July. 2021
 - [共著]Pear Flower Detection Using Deep Learning for Pollination, 5th edition of the International Conference of the International Commission of Agricultural Engineering (5th CIGR International Conference), May 2021.
 
 🥇 Reward
@@ -54,8 +57,15 @@
 - [PHPerKaigi2021](https://speakerdeck.com/kensukenakazawa/nian-jing-yan-sitaxue-sheng-enziniagajin-si-ukoto)
 - [技育展2021](https://docs.google.com/presentation/d/1r765b00gs_wNbFQpCQYnZJQ8nF-YNtsvlXeLQ4Jwun0/edit?usp=sharing)
 
-<!-- ![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=KensukeNakazawa&count_private=true&theme=tokyonight) -->
+<p align="left"> 
+  <img alt="Top Langs" height="150px" src="https://github-readme-stats.vercel.app/api/top-langs/?username=KensukeNakazawa&layout=compact&show_icons=true&theme=tokyonight" />
+  <img alt="github stats" height="150px" src="https://github-readme-stats.vercel.app/api?username=KensukeNakazawa&theme=tokyonight&show_icons=ture" />
+</p>
+<!-- [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=KensukeNakazawa
+)](https://github.com/anuraghazra/github-readme-stats)
 
+![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=KensukeNakazawa&count_private=true&theme=tokyonight) -->
+<!-- 
 ## :shipit: Skils in Enginnering
 
 🏝️　Languages
@@ -88,3 +98,4 @@
 ⚓　Certifications
 - 基本情報技術者
 - G検定
+ -->
