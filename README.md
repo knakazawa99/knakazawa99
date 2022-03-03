@@ -52,51 +52,10 @@
 
 🥇 Reward
 - 令和2年度新潟大学工学部卒業研究優秀賞
+- 情報処理学会 第33回 コンシューマ・デバイス＆システム研究会 優秀発表賞
 
 ### Develop
 🦄 Output
 - [PHPerKaigi2021](https://speakerdeck.com/kensukenakazawa/nian-jing-yan-sitaxue-sheng-enziniagajin-si-ukoto)
 - [技育展2021](https://docs.google.com/presentation/d/1r765b00gs_wNbFQpCQYnZJQ8nF-YNtsvlXeLQ4Jwun0/edit?usp=sharing)
 
-<p align="left"> 
-  <img alt="Top Langs" height="150px" src="https://github-readme-stats.vercel.app/api/top-langs/?username=KensukeNakazawa&layout=compact&show_icons=true&theme=tokyonight" />
-<!--   <img alt="github stats" height="150px" src="https://github-readme-stats.vercel.app/api?username=KensukeNakazawa&theme=tokyonight&show_icons=ture" /> -->
-</p>
-<!-- [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=KensukeNakazawa
-)](https://github.com/anuraghazra/github-readme-stats)
-
-![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=KensukeNakazawa&count_private=true&theme=tokyonight) -->
-<!-- 
-## :shipit: Skils in Enginnering
-
-🏝️　Languages
-- PHP
-  - Laravel
-  - CakePHP
-- Ruby
-  - Ruby on Rails
-- Python
-  - Keras(TensorFlow)
-  - Flask
-  - Celery
-- JavaScript
-  - Vue.js
-  - Node.js
-  - jQuery
-- Java
-  - Spring
-
-🍎 Others
-- AWS
-  - EC2
-  - RDS
-- Docker
-- DB
-  - MySQL
-  - MongoDB
-  - Redis
-
-⚓　Certifications
-- 基本情報技術者
-- G検定
- -->
