@@ -20,7 +20,7 @@
 - 新潟大学大学院自然科学研究科修士1年
 - 山崎研究室
 - ソフトウェアエンジニア
-- 趣味は筋トレと温泉
+
 
 ## 🏫 Backgrounds
 
@@ -54,8 +54,10 @@
 - 令和2年度新潟大学工学部卒業研究優秀賞
 - 情報処理学会 第33回 コンシューマ・デバイス＆システム研究会 優秀発表賞
 
+<!-- 
 ### Develop
 🦄 Output
 - [PHPerKaigi2021](https://speakerdeck.com/kensukenakazawa/nian-jing-yan-sitaxue-sheng-enziniagajin-si-ukoto)
-- [技育展2021](https://docs.google.com/presentation/d/1r765b00gs_wNbFQpCQYnZJQ8nF-YNtsvlXeLQ4Jwun0/edit?usp=sharing)
+- [技育展2021](https://docs.google.com/presentation/d/1r765b00gs_wNbFQpCQYnZJQ8nF-YNtsvlXeLQ4Jwun0/edit?usp=sharing) 
+-->
 
