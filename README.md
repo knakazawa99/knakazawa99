@@ -1,4 +1,6 @@
-### Kensuke Nakazawa ☕
+### Kensuke Nakazawa
+:hotsprings: ☕ :muscle:
+
 <a href="https://github.com/KensukeNakazawa">
   <img src="https://img.shields.io/badge/-Github-181717.svg?logo=github&style=plastic">
 </a>
