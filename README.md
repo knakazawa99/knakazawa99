@@ -1,9 +1,11 @@
 ### Kensuke Nakazawa
 :hotsprings: ☕ :muscle:
 
+<!--
 <a href="https://github.com/KensukeNakazawa">
   <img src="https://img.shields.io/badge/-Github-181717.svg?logo=github&style=plastic">
 </a>
+-->
 <a href="https://twitter.com/kensuke__19">
   <img src="https://img.shields.io/badge/-Twitter-1DA1F2.svg?logo=twitter&style=plastic">
 </a>
