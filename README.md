@@ -1,8 +1,10 @@
 ### Kensuke Nakazawa
-Software Engineer
+Software Engineer  ☕ 
 
-Twitter: [@kensuke__19](https://twitter.com/kensuke__19)  
-Email: [infokensuke.n@gmail.com](mailto:infokensuke.n@gmail.com)
+- Twitter: [@kensuke__19](https://twitter.com/kensuke__19)  
+- Email: [infokensuke.n@gmail.com](mailto:infokensuke.n@gmail.com)  
+- [LinkedIn](https://www.linkedin.com/in/%E5%81%A5%E4%BB%8B-%E4%B8%AD%E6%BE%A4-407603224/)
+
 <!-- 
 ### 出版
 - 中澤健介, 山﨑達也, “洋ナシ果実を対象とした外観汚損検査サービスの開発,” 情報処理学会論文誌コンシューマ・デバイス＆システム（CDS）, vol.12, no.3, pp.1-9, Sep. 2022.
