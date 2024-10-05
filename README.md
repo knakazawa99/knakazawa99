@@ -9,7 +9,7 @@ Software Engineer  ☕
 #### Core Tech Stack
 - Language: Go/Python/TypeScript
 - Cloud: AWS(Container/Serverless)
-- DB: MySQL
+- DB: MySQL/Redis
 - DataPlatform: Redshift/Snowflake
 
 <!-- 
