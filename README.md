@@ -10,7 +10,8 @@ Software Engineer  ☕
 - Language: Go/Python/TypeScript
 - Cloud: AWS(Container/Serverless)
 - DB: MySQL/Redis
-- DataPlatform: Redshift/Snowflake
+- Data Warehouse: Amazon Redshift/Snowflake
+- Workflow: Prefect/AWS Step Functions
 
 <!-- 
 ### 出版
