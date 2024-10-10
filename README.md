@@ -12,6 +12,9 @@ Software Engineer  ☕
 - DB: MySQL/Redis
 - Data Warehouse: Amazon Redshift/Snowflake
 - Workflow: Prefect/AWS Step Functions
+- CI/CD: Github Actions/Cloud Build
+- IaC: Terraform
+
 
 <!-- 
 ### 出版
