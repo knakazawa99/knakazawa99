@@ -1,5 +1,5 @@
 ### Kensuke Nakazawa
-Software Engineer  ☕ 
+Software Engineer  ☕ 🐕 ♨️ ⛰️ 
 
 - Twitter: [@kensuke__19](https://twitter.com/kensuke__19)  
 - Email: [infokensuke.n@gmail.com](mailto:infokensuke.n@gmail.com)  
