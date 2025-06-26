@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- ベースパスを /pomodol/ に設定してサブディレクトリで正しく動作させる -->
+  <base href="/pomodol/" />
+  <title>Pomodoro Timer</title>
+  <style>
+      /* タイマー全体を画面中央に配置 */
+      body {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+          margin: 0;
+          font-family: sans-serif;
+          background-color: #f4f4f4;
+      }
+      .timer {
+          text-align: center;
+          background: #fff;
+          padding: 2rem;
+          border-radius: 1rem;
+          box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+          width: 300px;
+      }
+      .display {
+          font-size: 3rem;
+          margin-bottom: 1rem;
+      }
+      .phase {
+          font-size: 1.2rem;
+          margin-bottom: 0.5rem;
+          color: #555;
+      }
+      .step {
+          font-size: 1rem;
+          margin-bottom: 1.5rem;
+          color: #333;
+      }
+      button {
+          font-size: 1rem;
+          padding: 0.5rem 1rem;
+          margin: 0 0.5rem;
+          border: none;
+          border-radius: 0.5rem;
+          cursor: pointer;
+          background-color: #007bff;
+          color: #fff;
+      }
+      button:disabled {
+          background-color: #ccc;
+          cursor: default;
+      }
+  </style>
+</head>
+<body>
+<div class="timer">
+  <div class="display" id="time">25:00</div>
+  <div class="phase" id="phase">Work</div>
+  <div class="step" id="currentStep">Round: 1</div>
+  <button id="start">Start</button>
+  <button id="pause" disabled>Pause</button>
+  <button id="reset" disabled>Reset</button>
+</div>
+
+<script>
+  // 各フェーズの長さ（秒単位）
+  const WORK_DURATION = 25 * 60;
+  const SHORT_BREAK = 5 * 60;
+  const LONG_BREAK = 15 * 60;
+  const CYCLES_BEFORE_LONG = 4; // 4サイクルごとに長めの休憩
+
+  // 状態管理用
+  let remaining, timerId, cycleCount, phase;
+
+  // 要素参照
+  const timeEl = document.getElementById('time');
+  const phaseEl = document.getElementById('phase');
+  const stepEl = document.getElementById('currentStep');
+  const btnStart = document.getElementById('start');
+  const btnPause = document.getElementById('pause');
+  const btnReset = document.getElementById('reset');
+
+  // 現在のラウンドを返す（Workフェーズは次のラウンド番号、Breakフェーズは直前のラウンド）
+  function getCurrentRound() {
+    return phase === 'work' ? cycleCount + 1 : cycleCount;
+  }
+
+  // LocalStorageに状態を保存
+  function saveState() {
+    const state = { remaining, phase, cycleCount };
+    localStorage.setItem('pomodolState', JSON.stringify(state));
+  }
+
+  // ページ読み込み時にLocalStorageから状態を復元
+  function init() {
+    const saved = localStorage.getItem('pomodolState');
+    if (saved) {
+      try {
+        const { remaining: r, phase: p, cycleCount: c } = JSON.parse(saved);
+        remaining = r;
+        phase = p;
+        cycleCount = c;
+      } catch {
+        remaining = WORK_DURATION;
+        phase = 'work';
+        cycleCount = 0;
+      }
+    } else {
+      remaining = WORK_DURATION;
+      phase = 'work';
+      cycleCount = 0;
+    }
+    updateDisplay();
+  }
+  window.addEventListener('load', init);
+
+  // 音を鳴らす（Web Audio API）
+  function playSound() {
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.type = 'sine';
+    osc.frequency.value = 1000;
+    osc.start();
+    gain.gain.exponentialRampToValueAtTime(0.00001, ctx.currentTime + 1);
+  }
+
+  // 表示を更新して状態を保存
+  function updateDisplay() {
+    const m = Math.floor(remaining / 60).toString().padStart(2, '0');
+    const s = (remaining % 60).toString().padStart(2, '0');
+    timeEl.textContent = `${m}:${s}`;
+    phaseEl.textContent =
+      phase === 'work' ? 'Work' :
+        phase === 'short' ? 'Short Break' :
+          'Long Break';
+    stepEl.textContent = `Round: ${getCurrentRound()}`;
+    saveState();
+  }
+
+  // フェーズ切り替え
+  function switchPhase() {
+    if (phase === 'work') {
+      cycleCount++;
+      phase = (cycleCount % CYCLES_BEFORE_LONG === 0) ? 'long' : 'short';
+    } else {
+      phase = 'work';
+    }
+    remaining =
+      phase === 'work' ? WORK_DURATION :
+        phase === 'short' ? SHORT_BREAK :
+          LONG_BREAK;
+    playSound();
+    updateDisplay();
+  }
+
+  // カウントダウン処理
+  function tick() {
+    if (remaining > 0) {
+      remaining--;
+      updateDisplay();
+    } else {
+      clearInterval(timerId);
+      switchPhase();
+      timerId = setInterval(tick, 1000);
+    }
+  }
+
+  // ボタンイベント設定
+  btnStart.addEventListener('click', () => {
+    btnStart.disabled = true;
+    btnPause.disabled = false;
+    btnReset.disabled = false;
+    timerId = setInterval(tick, 1000);
+  });
+
+  btnPause.addEventListener('click', () => {
+    if (timerId) {
+      clearInterval(timerId);
+      timerId = null;
+      btnPause.textContent = 'Resume';
+      saveState();
+    } else {
+      timerId = setInterval(tick, 1000);
+      btnPause.textContent = 'Pause';
+    }
+  });
+
+  btnReset.addEventListener('click', () => {
+    clearInterval(timerId);
+    timerId = null;
+    phase = 'work';
+    cycleCount = 0;
+    remaining = WORK_DURATION;
+    updateDisplay();
+    btnStart.disabled = false;
+    btnPause.disabled = true;
+    btnPause.textContent = 'Pause';
+    btnReset.disabled = true;
+  });
+</script>
+</body>
+</html>
