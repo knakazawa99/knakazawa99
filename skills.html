@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>スキル詳細 - 中澤健介</title>
+    <meta name="description" content="中澤健介の技術スキル詳細ページ。AWS、Go、Python、TypeScript、Terraform、Kubernetesなどの技術スタックと実績をご紹介。">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            padding: 40px 0;
+            color: white;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 300;
+        }
+
+        .header .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+
+        .nav-back {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 500;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-back:hover {
+            opacity: 0.8;
+        }
+
+        .main-content {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            margin-top: -30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section {
+            padding: 40px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        .section h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section h2 i {
+            color: #667eea;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .skill-category {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 4px solid #667eea;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-category h3 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .skill-category h3 i {
+            color: #667eea;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-item {
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .skill-item:last-child {
+            border-bottom: none;
+        }
+
+        .skill-name {
+            font-weight: 500;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .skill-description {
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.4;
+        }
+
+        .experience-highlight {
+            background: #e8f5e8;
+            border-left: 4px solid #28a745;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+
+        .experience-highlight h4 {
+            color: #28a745;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+
+        .experience-highlight p {
+            font-size: 0.8rem;
+            color: #2c3e50;
+            margin: 0;
+        }
+
+        .certifications {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .cert-item {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 15px;
+            border-left: 4px solid #28a745;
+            transition: transform 0.3s ease;
+        }
+
+        .cert-item:hover {
+            transform: translateY(-3px);
+        }
+
+        .cert-item h4 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .cert-item .cert-date {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        .cert-item a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .cert-item a:hover {
+            text-decoration: underline;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 60px 40px;
+        }
+
+        .cta-section h2 {
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #667eea;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .section {
+                padding: 20px;
+            }
+            
+            .nav-back {
+                position: relative;
+                top: auto;
+                left: auto;
+                margin-bottom: 20px;
+                justify-content: center;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="nav-back">
+            <i class="fas fa-arrow-left"></i>
+            ホームに戻る
+        </a>
+
+        <header class="header">
+            <h1>スキル詳細</h1>
+            <div class="subtitle">技術スタックと実績</div>
+        </header>
+
+        <main class="main-content">
+            <section class="section">
+                <h2><i class="fas fa-code"></i>プログラミング言語</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <ul class="skill-list">
+                            <li class="skill-item">
+                                <div>
+                                    <div class="skill-name">Go</div>
+                                    <div class="skill-description">高パフォーマンスなバックエンド開発、マイクロサービス構築</div>
+                                    <div class="experience-highlight">
+                                        <h4>実績</h4>
+                                        <p>APIレイテンシ8~10倍改善、マイクロサービス開発</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="skill-item">
+                                <div>
+                                    <div class="skill-name">Python</div>
+                                    <div class="skill-description">機械学習、データ処理、API開発</div>
+                                    <div class="experience-highlight">
+                                        <h4>実績</h4>
+                                        <p>BERT画像変換モデル実装、処理時間20秒→2秒に短縮</p>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <ul class="skill-list">
+                            <li class="skill-item">
+                                <div>
+                                    <div class="skill-name">TypeScript/JavaScript</div>
+                                    <div class="skill-description">フルスタック開発、Node.js、React</div>
+                                    <div class="experience-highlight">
+                                        <h4>実績</h4>
+                                        <p>マイクロサービス開発、Kubernetes移行プロジェクト</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="skill-item">
+                                <div>
+                                    <div class="skill-name">Ruby</div>
+                                    <div class="skill-description">Ruby on Railsを用いたWebアプリケーション開発</div>
+                                </div>
+                            </li>
+                            <li class="skill-item">
+                                <div>
+                                    <div class="skill-name">Scala</div>
+                                    <div class="skill-description">関数型プログラミング、大規模システム開発</div>
+                                    <div class="experience-highlight">
+                                        <h4>実績</h4>
+                                        <p>広告プロダクト開発、データ処理基盤</p>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2><i class="fas fa-database"></i>データベース・ストレージ</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3><i class="fas fa-database"></i>リレーショナルDB</h3>
+                        <ul class="skill-list">
+                            <li class="skill-item">
+                                <div>
+                                    <div class="skill-name">MySQL</div>
+                                    <div class="skill-description">パフォーマンス最適化、レプリケーション</div>
+                                    <div class="experience-highlight">
+                                        <h4>実績</h4>
+                                        <p>APIレイテンシ8~10倍改善、Auroraコスト30%削減</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="skill-item">
+                                <div>
+                                    <div class="skill-name">PostgreSQL</div>
+                                    <div class="skill-description">高可用性、パフォーマンスチューニング</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3><i class="fas fa-cloud"></i>NoSQL・クラウドDB</h3>
+                        <ul class="skill-list">
+                            <li class="skill-item">
+                                <div>
+                                    <div class="skill-name">Redis</div>
+                                    <div class="skill-description">キャッシュ、セッション管理</div>
+                                </div>
+                            </li>
+                            <li class="skill-item">
+                                <div>
+                                    <div class="skill-name">DynamoDB</div>
+                                    <div class="skill-description">スケーラブルなNoSQLデータベース</div>
+                                </div>
+                            </li>
+                            <li class="skill-item">
+                                <div>
+                                    <div class="skill-name">Redshift/Snowflake</div>
+                                    <div class="skill-description">データウェアハウス、分析基盤</div>
+                                    <div class="experience-highlight">
+                                        <h4>実績</h4>
+                                        <p>Snowflakeデータ基盤構築、dbt活用</p>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2><i class="fas fa-cloud"></i>クラウド・インフラ</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3><i class="fab fa-aws"></i>AWS</h3>
+                        <ul class="skill-list">
+                            <li class="skill-item">
+                                <div>
+                                    <div class="skill-name">ECS/Lambda/Step Functions</div>
+                                    <div class="skill-description">サーバーレス、コンテナ、ワークフロー</div>
+                                    <div class="experience-highlight">
+                                        <h4>実績</h4>
+                                        <p>Step Functions移行、監視コスト削減</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="skill-item">
+                                <div>
+                                    <div class="skill-name">RDS/Aurora/DynamoDB</div>
+                                    <div class="skill-description">マネージドデータベース</div>
+                                </div>
+                            </li>
+                            <li class="skill-item">
+                                <div>
+                                    <div class="skill-name">S3/CloudFront</div>
+                                    <div class="skill-description">ストレージ、CDN</div>
+                                </div>
+                            </li>
+                            <li class="skill-item">
+                                <div>
+                                    <div class="skill-name">VPC/Route53</div>
+                                    <div class="skill-description">ネットワーク、DNS</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3><i class="fas fa-tools"></i>インフラ・DevOps</h3>
+                        <ul class="skill-list">
+                            <li class="skill-item">
+                                <div>
+                                    <div class="skill-name">Terraform</div>
+                                    <div class="skill-description">Infrastructure as Code</div>
+                                    <div class="experience-highlight">
+                                        <h4>実績</h4>
+                                        <p>複数プロジェクトでIaC化実現</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="skill-item">
+                                <div>
+                                    <div class="skill-name">GitHub Actions</div>
+                                    <div class="skill-description">CI/CD、自動化、ワークフロー</div>
+                                    <div class="experience-highlight">
+                                        <h4>実績</h4>
+                                        <p>build matrixとpath filter活用、CI効率化</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="skill-item">
+                                <div>
+                                    <div class="skill-name">Kubernetes</div>
+                                    <div class="skill-description">コンテナオーケストレーション</div>
+                                </div>
+                            </li>
+                            <li class="skill-item">
+                                <div>
+                                    <div class="skill-name">Docker</div>
+                                    <div class="skill-description">コンテナ化、マイクロサービス</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2><i class="fas fa-certificate"></i>資格・認証</h2>
+                <div class="certifications">
+                    <div class="cert-item">
+                        <h4>AWS Certified Solutions Architect – Professional</h4>
+                        <div class="cert-date">2023年取得</div>
+                        <a href="https://www.credly.com/badges/ffac768f-433a-4dbc-a907-0d130de12105" target="_blank">認証を確認</a>
+                    </div>
+                    <div class="cert-item">
+                        <h4>AWS Certified Solutions Architect – Associate</h4>
+                        <div class="cert-date">2022年取得</div>
+                        <a href="https://www.credly.com/badges/0ac7753b-434d-4a8b-b6a0-83fa9c7c89ac/public_url" target="_blank">認証を確認</a>
+                    </div>
+                    <div class="cert-item">
+                        <h4>JDLA Deep Learning for GENERAL 2019 #3</h4>
+                        <div class="cert-date">2019年取得</div>
+                        <a href="https://nlp.netlearning.co.jp/ns/portal/openbadge/public/assertions/detail/RE8vaUM4dzBmQkl2Y3BzWE5lKzE2Zz09" target="_blank">認証を確認</a>
+                    </div>
+                    <div class="cert-item">
+                        <h4>基本情報技術者</h4>
+                        <div class="cert-date">2018年取得</div>
+                        <span>第FE-2018-04-09802号</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="cta-section">
+                <h2>プロジェクトのご相談をお待ちしています</h2>
+                <p>これらの技術スキルを活かし、あなたのプロジェクトを成功に導きます。</p>
+                <a href="mailto:infokensuke.n@gmail.com" class="cta-button">お問い合わせはこちら</a>
+            </section>
+        </main>
+    </div>
+</body>
+</html> 

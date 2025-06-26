@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>個人プロジェクト詳細 - 中澤健介</title>
+    <meta name="description" content="中澤健介の個人プロジェクト詳細ページ。Google Ad Manager Go SDK、Prefect AWSプラグイン、GPU CLIツール、FitPlaceなどの個人開発・OSSコントリビューションをご紹介。">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            padding: 40px 0;
+            color: white;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 300;
+        }
+
+        .header .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+
+        .nav-back {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 500;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-back:hover {
+            opacity: 0.8;
+        }
+
+        .main-content {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            margin-top: -30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section {
+            padding: 40px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        .section h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section h2 i {
+            color: #667eea;
+        }
+
+        .project-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            border-left: 4px solid #667eea;
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .project-company {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 15px;
+        }
+
+        .project-period {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            display: inline-block;
+        }
+
+        .project-content {
+            padding: 25px;
+        }
+
+        .project-description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .project-details {
+            margin-bottom: 20px;
+        }
+
+        .detail-item {
+            margin-bottom: 15px;
+        }
+
+        .detail-title {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .detail-content {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .tech-tag {
+            background: #667eea;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .github-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #333;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            margin-top: 15px;
+        }
+
+        .github-link:hover {
+            background: #555;
+            transform: translateY(-2px);
+        }
+
+        .achievements {
+            background: #e8f5e8;
+            border-left: 4px solid #28a745;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .achievements h4 {
+            color: #28a745;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .achievements ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .achievements li {
+            padding: 5px 0;
+            color: #2c3e50;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .achievements li:before {
+            content: "✓";
+            color: #28a745;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .challenges {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .challenges h4 {
+            color: #856404;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .challenges ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .challenges li {
+            padding: 5px 0;
+            color: #2c3e50;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .challenges li:before {
+            content: "⚡";
+            color: #ffc107;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 60px 40px;
+        }
+
+        .cta-section h2 {
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #667eea;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .section {
+                padding: 20px;
+            }
+            
+            .nav-back {
+                position: relative;
+                top: auto;
+                left: auto;
+                margin-bottom: 20px;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="nav-back">
+            <i class="fas fa-arrow-left"></i>
+            ホームに戻る
+        </a>
+
+        <header class="header">
+            <h1>個人プロジェクト詳細</h1>
+            <div class="subtitle">個人開発・OSSコントリビューション</div>
+        </header>
+
+        <main class="main-content">
+            <section class="section">
+                <!-- 開発中プロジェクト -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-title">開発中プロジェクト</div>
+                        <div class="project-company">愛犬家向けアプリ</div>
+                        <span class="project-period">開発中</span>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-description">
+                            愛犬家向けのアプリを開発中です。詳細は準備中です。
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Google Ad Manager の Go SDK 開発 -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-title">Google Ad Manager の Go SDK 開発</div>
+                        <div class="project-company">オープンソース</div>
+                        <span class="project-period">2023 ~</span>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-description">
+                            Google Ad Manager では SOAP 形式のAPIを提供しており、SOAP API は現在利用するプロトコルとしてファーストチョイスにはなっていません。そのため、SDKを利用するのが一般的な利用方法になりますが、公式には Go に対しての SDK は公開されていません。
+                        </div>
+                        
+                        <div class="achievements">
+                            <h4>解決した課題</h4>
+                            <ul>
+                                <li>Go言語から Google Ad Manager の API に対してSDKベースの利用を実現</li>
+                                <li>公開された WSDL を元に Go の template を使ってコードを自動生成</li>
+                                <li>利用者側はSDKベースで利用できる環境を構築</li>
+                            </ul>
+                        </div>
+
+                        <div class="challenges">
+                            <h4>技術的課題</h4>
+                            <ul>
+                                <li>抽象化されたクラスが Go言語に対して上手く適用できない問題</li>
+                                <li>全ての機能を提供するには至っていない状況</li>
+                                <li>SOAP API の複雑な構造の Go への変換</li>
+                            </ul>
+                        </div>
+
+                        <div class="tech-stack">
+                            <span class="tech-tag">Go</span>
+                            <span class="tech-tag">SOAP</span>
+                            <span class="tech-tag">WSDL</span>
+                            <span class="tech-tag">コード生成</span>
+                            <span class="tech-tag">Google Ad Manager</span>
+                        </div>
+
+                        <a href="https://github.com/knakazawa99/gam-sdk-go" class="github-link" target="_blank">
+                            <i class="fab fa-github"></i>
+                            GitHub: knakazawa99/gam-sdk-go
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Prefect AWSプラグインへ機能追加 -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-title">Prefect AWSプラグインへ機能追加</div>
+                        <div class="project-company">OSS コントリビューション</div>
+                        <span class="project-period">2023</span>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-description">
+                            Prefect が利用しているAWS プラグインから AWS Glue の Job を利用できるように機能追加を行いました。関わっていたプロダクトにて採用されていた ワークフローツールにて、利用したい機能がなかったため、OSS の prefect-awsにコントリビューションを行いました。
+                        </div>
+                        
+                        <div class="achievements">
+                            <h4>成果</h4>
+                            <ul>
+                                <li>AWS Glue の Job を利用できる機能を追加</li>
+                                <li>Prefect 本体に吸収されるまでに至った</li>
+                                <li>OSS コミュニティへの貢献</li>
+                            </ul>
+                        </div>
+
+                        <div class="tech-stack">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">AWS Glue</span>
+                            <span class="tech-tag">Prefect</span>
+                            <span class="tech-tag">OSS</span>
+                            <span class="tech-tag">ワークフロー</span>
+                        </div>
+
+                        <a href="https://github.com/PrefectHQ/prefect-aws/pull/308" class="github-link" target="_blank">
+                            <i class="fab fa-github"></i>
+                            PR: PrefectHQ/prefect-aws#308
+                        </a>
+                    </div>
+                </div>
+
+                <!-- GPUを利用しているサーバーでの操作効率化のためのCLI開発 -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-title">GPUを利用しているサーバーでの操作効率化のためのCLI開発</div>
+                        <div class="project-company">研究室プロジェクト</div>
+                        <span class="project-period">2022</span>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-description">
+                            所属した研究室では、何台か GPU を搭載した Linux サーバーを有していました。その中で、研究を行う学生は、Pythonのコマンドで機械学習のモデルを学習するプログラムを実行し、実行中はサーバーに接続しているPCからのコネクションが切られない様に注意する必要がありました。また、実行環境は Anacondaで構築され、環境の再現性が薄いことが課題となっていました。
+                        </div>
+                        
+                        <div class="achievements">
+                            <h4>解決した課題</h4>
+                            <ul>
+                                <li>Dockerコンテナ内で機械学習を行う環境を構築</li>
+                                <li>バックグラウンド実行機能を実装</li>
+                                <li>学習のバックグラウンド実行からそのログ、実行完了後のSlack通知までを一貫して行う機能を提供</li>
+                                <li>環境の再現性を向上</li>
+                            </ul>
+                        </div>
+
+                        <div class="challenges">
+                            <h4>技術的課題</h4>
+                            <ul>
+                                <li>GPU搭載サーバーでのDocker環境構築</li>
+                                <li>長時間実行される機械学習タスクの管理</li>
+                                <li>複数ユーザーでのGPUリソース共有</li>
+                                <li>Anaconda環境からDocker環境への移行</li>
+                            </ul>
+                        </div>
+
+                        <div class="tech-stack">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Docker</span>
+                            <span class="tech-tag">CLI</span>
+                            <span class="tech-tag">機械学習</span>
+                            <span class="tech-tag">GPU</span>
+                            <span class="tech-tag">Slack API</span>
+                        </div>
+
+                        <a href="https://github.com/knakazawa99/GPUContainerRunner" class="github-link" target="_blank">
+                            <i class="fab fa-github"></i>
+                            GitHub: knakazawa99/GPUContainerRunner
+                        </a>
+                    </div>
+                </div>
+
+                <!-- FitPlace -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-title">FitPlace</div>
+                        <div class="project-company">個人開発</div>
+                        <span class="project-period">2021</span>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-description">
+                            筋トレの効率化を図るために、自身が抱えていた筋トレの予定を立てることを可能にし、筋トレの予定、トレーニング内容の保存、リマインドを主に行うアプリケーション。
+                        </div>
+                        
+                        <div class="achievements">
+                            <h4>実装した機能</h4>
+                            <ul>
+                                <li>筋トレの予定立て機能</li>
+                                <li>トレーニング内容の保存</li>
+                                <li>リマインド機能</li>
+                                <li>フルスタックWebアプリケーション</li>
+                            </ul>
+                        </div>
+
+                        <div class="challenges">
+                            <h4>技術的課題</h4>
+                            <ul>
+                                <li>Laravel + Vue.js でのフルスタック開発</li>
+                                <li>AWS EC2でのデプロイ</li>
+                                <li>CI/CDパイプラインの構築</li>
+                                <li>現在はクローズしてソースコードのみ公開</li>
+                            </ul>
+                        </div>
+
+                        <div class="tech-stack">
+                            <span class="tech-tag">PHP</span>
+                            <span class="tech-tag">Laravel</span>
+                            <span class="tech-tag">Vue.js</span>
+                            <span class="tech-tag">MySQL</span>
+                            <span class="tech-tag">Redis</span>
+                            <span class="tech-tag">AWS</span>
+                            <span class="tech-tag">GitHub Actions</span>
+                        </div>
+
+                        <a href="https://github.com/knakazawa99/FitPlace" class="github-link" target="_blank">
+                            <i class="fab fa-github"></i>
+                            GitHub: knakazawa99/FitPlace
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="cta-section">
+                <h2>プロジェクトのご相談をお待ちしています</h2>
+                <p>これらの個人プロジェクトの経験を活かし、あなたのプロジェクトを成功に導きます。</p>
+                <a href="mailto:infokensuke.n@gmail.com" class="cta-button">お問い合わせはこちら</a>
+            </section>
+        </main>
+    </div>
+</body>
+</html> 
