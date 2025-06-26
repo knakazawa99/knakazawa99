@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>プロジェクト詳細 - 中澤健介</title>
+    <meta name="description" content="中澤健介のプロジェクト詳細ページ。AWS、Go、Python、TypeScriptを用いたクラウドネイティブなシステム開発から機械学習基盤構築までの実績をご紹介。">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            padding: 40px 0;
+            color: white;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 300;
+        }
+
+        .header .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+
+        .nav-back {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 500;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-back:hover {
+            opacity: 0.8;
+        }
+
+        .main-content {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            margin-top: -30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section {
+            padding: 40px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        .section h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section h2 i {
+            color: #667eea;
+        }
+
+        .project-grid {
+            display: grid;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .project-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            overflow: hidden;
+            border-left: 4px solid #667eea;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .project-company {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 15px;
+        }
+
+        .project-period {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            display: inline-block;
+        }
+
+        .project-content {
+            padding: 25px;
+        }
+
+        .project-description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .project-details {
+            margin-bottom: 20px;
+        }
+
+        .detail-item {
+            margin-bottom: 15px;
+        }
+
+        .detail-title {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .detail-content {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .tech-tag {
+            background: #667eea;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .achievements {
+            background: #e8f5e8;
+            border-left: 4px solid #28a745;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .achievements h4 {
+            color: #28a745;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .achievements ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .achievements li {
+            padding: 5px 0;
+            color: #2c3e50;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .achievements li:before {
+            content: "✓";
+            color: #28a745;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .challenges {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .challenges h4 {
+            color: #856404;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .challenges ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .challenges li {
+            padding: 5px 0;
+            color: #2c3e50;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .challenges li:before {
+            content: "⚡";
+            color: #ffc107;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 60px 40px;
+        }
+
+        .cta-section h2 {
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #667eea;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .section {
+                padding: 20px;
+            }
+            
+            .nav-back {
+                position: relative;
+                top: auto;
+                left: auto;
+                margin-bottom: 20px;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="nav-back">
+            <i class="fas fa-arrow-left"></i>
+            ホームに戻る
+        </a>
+
+        <header class="header">
+            <h1>プロジェクト詳細</h1>
+            <div class="subtitle">実績と技術的な取り組み</div>
+        </header>
+
+        <main class="main-content">
+            <section class="section">
+                <h2><i class="fas fa-briefcase"></i>プロジェクト実績</h2>
+                
+                <div class="project-grid">
+                    <!-- 不動産仲介向けプロダクト開発 -->
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="project-title">不動産仲介向けプロダクト開発</div>
+                            <div class="project-company">株式会社Facilo</div>
+                            <span class="project-period">2025/01 ~</span>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-description">
+                                不動産仲介向けシステムの開発に従事。Ruby on RailsとTypeScriptを用いたフルスタック開発を担当。
+                            </div>
+                            <div class="project-details">
+                                <div class="detail-item">
+                                    <div class="detail-title">担当領域</div>
+                                    <div class="detail-content">バックエンド開発、フロントエンド開発、インフラ設計</div>
+                                </div>
+                                <div class="detail-item">
+                                    <div class="detail-title">主な技術</div>
+                                    <div class="detail-content">Ruby on Rails、TypeScript、AWS、CircleCI</div>
+                                </div>
+                            </div>
+                            <div class="tech-stack">
+                                <span class="tech-tag">Ruby</span>
+                                <span class="tech-tag">TypeScript</span>
+                                <span class="tech-tag">AWS</span>
+                                <span class="tech-tag">CircleCI</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 小売りメディア向け広告プロダクト開発 -->
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="project-title">小売りメディア向け広告プロダクト開発</div>
+                            <div class="project-company">株式会社サイバーエージェント</div>
+                            <span class="project-period">2023/05 ~ 2024/12</span>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-description">
+                                リテールメディア向け広告プロダクトの新規開発から参画し、保守運用フェーズまで担当。大規模なデータ処理とパフォーマンス最適化を実現。
+                            </div>
+                            
+                            <div class="achievements">
+                                <h4>主要な成果</h4>
+                                <ul>
+                                    <li>APIのパフォーマンス改善によりレイテンシを8~10倍改善</li>
+                                    <li>Auroraのコストを30%削減</li>
+                                    <li>Snowflakeを用いたデータ基盤構築をリード</li>
+                                    <li>AWS Step Functionsへのワークフローツール移行を成功</li>
+                                </ul>
+                            </div>
+
+                            <div class="challenges">
+                                <h4>技術的課題と解決</h4>
+                                <ul>
+                                    <li>大規模データ処理の最適化</li>
+                                    <li>複数AWSアカウント間のデータ連携設計</li>
+                                    <li>レガシーシステムからの段階的移行</li>
+                                    <li>チーム内での技術標準化</li>
+                                </ul>
+                            </div>
+
+                            <div class="project-details">
+                                <div class="detail-item">
+                                    <div class="detail-title">担当内容</div>
+                                    <div class="detail-content">API開発、バッチ処理、データ基盤構築、インフラ設計、チームリード</div>
+                                </div>
+                                <div class="detail-item">
+                                    <div class="detail-title">チーム規模</div>
+                                    <div class="detail-content">PM 3名、開発エンジニア 5名</div>
+                                </div>
+                            </div>
+                            
+                            <div class="tech-stack">
+                                <span class="tech-tag">Go</span>
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">Scala</span>
+                                <span class="tech-tag">AWS</span>
+                                <span class="tech-tag">Terraform</span>
+                                <span class="tech-tag">Snowflake</span>
+                                <span class="tech-tag">dbt</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 広告画像の自動生成プロジェクト -->
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="project-title">広告画像の自動生成プロジェクト</div>
+                            <div class="project-company">株式会社サイバーエージェント</div>
+                            <span class="project-period">2022/07 ~ 2022/08</span>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-description">
+                                広告画像の自動生成を行うAIシステムのML/Ops及びバックエンド領域を担当。研究チームと協業し、論文の実装から本番運用までを実現。
+                            </div>
+                            
+                            <div class="achievements">
+                                <h4>主要な成果</h4>
+                                <ul>
+                                    <li>BERTを用いた色変換モデルの実装</li>
+                                    <li>画像処理の最適化により処理時間を20秒から2秒に短縮</li>
+                                    <li>NumbaとOpenCVを活用したパフォーマンス改善</li>
+                                    <li>論文から実装まで一貫した開発プロセスを確立</li>
+                                </ul>
+                            </div>
+
+                            <div class="challenges">
+                                <h4>技術的課題と解決</h4>
+                                <ul>
+                                    <li>JavaScriptからPythonへの移植時のパフォーマンス劣化</li>
+                                    <li>機械学習モデルの本番環境での安定運用</li>
+                                    <li>研究と実装の橋渡し</li>
+                                </ul>
+                            </div>
+
+                            <div class="project-details">
+                                <div class="detail-item">
+                                    <div class="detail-title">担当領域</div>
+                                    <div class="detail-content">ML/Ops、バックエンド開発、パフォーマンス最適化</div>
+                                </div>
+                                <div class="detail-item">
+                                    <div class="detail-title">研究協業</div>
+                                    <div class="detail-content">自社研究チームとの論文実装協業</div>
+                                </div>
+                            </div>
+                            
+                            <div class="tech-stack">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">GCP</span>
+                                <span class="tech-tag">Terraform</span>
+                                <span class="tech-tag">dvc</span>
+                                <span class="tech-tag">MLOps</span>
+                                <span class="tech-tag">論文実装</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- マイクロサービスのバックエンド開発 -->
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="project-title">マイクロサービスのバックエンド開発</div>
+                            <div class="project-company">株式会社サイバーエージェント</div>
+                            <span class="project-period">2022/05 ~ 2022/06</span>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-description">
+                                株式会社CAMのマイクロサービスプラットフォームチームでバックエンド領域を担当。分散トレーシングを用いたパフォーマンス改善を実現。
+                            </div>
+                            
+                            <div class="achievements">
+                                <h4>主要な成果</h4>
+                                <ul>
+                                    <li>バッチ処理の実行時間を65%短縮</li>
+                                    <li>APIへのリクエスト数を一日で150万程度削減</li>
+                                    <li>分散トレーシングによるボトルネック特定</li>
+                                    <li>全体のパフォーマンス向上に貢献</li>
+                                </ul>
+                            </div>
+
+                            <div class="project-details">
+                                <div class="detail-item">
+                                    <div class="detail-title">担当領域</div>
+                                    <div class="detail-content">バックエンド開発、パフォーマンス改善、分散トレーシング</div>
+                                </div>
+                                <div class="detail-item">
+                                    <div class="detail-title">改善手法</div>
+                                    <div class="detail-content">Datadog分散トレーシング、ログ分析、不要処理の特定と削除</div>
+                                </div>
+                            </div>
+                            
+                            <div class="tech-stack">
+                                <span class="tech-tag">TypeScript</span>
+                                <span class="tech-tag">Datadog</span>
+                                <span class="tech-tag">Google Cloud</span>
+                                <span class="tech-tag">Cloud Logging</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- アプリのバックエンド開発 -->
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="project-title">アプリのバックエンド開発</div>
+                            <div class="project-company">株式会社サイバーエージェント（株式会社タップル）</div>
+                            <span class="project-period">2022/02 ~ 2022/04</span>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-description">
+                                株式会社タップルにて、バックエンド領域の開発を担当。新たに導入するサブシステムの新機能開発と外部SaaS接続機能を実装。マイクロサービス化に伴う開発コスト増加を抑制するため、コード自動生成システムを構築。
+                            </div>
+                            
+                            <div class="achievements">
+                                <h4>主要な成果</h4>
+                                <ul>
+                                    <li>OpenAPI GeneratorとMustacheテンプレートを活用したコード自動生成システムを構築</li>
+                                    <li>GitHub Actionsのbuild matrixとpath filterを活用し、CI効率化を実現</li>
+                                    <li>GitHub PackageでTypeScriptライブラリを公開する仕組みを構築</li>
+                                    <li>マイクロサービス化に伴う開発コスト増加を抑制</li>
+                                </ul>
+                            </div>
+
+                            <div class="challenges">
+                                <h4>技術的課題と解決</h4>
+                                <ul>
+                                    <li>マイクロサービス化に伴う開発コスト増加の抑制</li>
+                                    <li>OpenAPI Generatorで生成されるコードの使いにくさの改善</li>
+                                    <li>サービス増加に伴うCIの効率化</li>
+                                    <li>外部SaaSとの安全な接続機能の実装</li>
+                                </ul>
+                            </div>
+
+                            <div class="project-details">
+                                <div class="detail-item">
+                                    <div class="detail-title">担当内容</div>
+                                    <div class="detail-content">バックエンド開発、API設計、CI/CD構築、コード自動生成システム開発</div>
+                                </div>
+                                <div class="detail-item">
+                                    <div class="detail-title">開発フェーズ</div>
+                                    <div class="detail-content">設計、開発、テスト</div>
+                                </div>
+                            </div>
+
+                            <div class="tech-stack">
+                                <span class="tech-tag">TypeScript</span>
+                                <span class="tech-tag">JavaScript</span>
+                                <span class="tech-tag">AWS</span>
+                                <span class="tech-tag">GitHub Actions</span>
+                                <span class="tech-tag">OpenAPI</span>
+                                <span class="tech-tag">MongoDB</span>
+                                <span class="tech-tag">Nest.js</span>
+                                <span class="tech-tag">Angular</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 社内アプリケーションのKubernetes化プロジェクト -->
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="project-title">社内アプリケーションのKubernetes化プロジェクト</div>
+                            <div class="project-company">楽天グループ株式会社</div>
+                            <span class="project-period">2021/10 ~ 2021/12</span>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-description">
+                                ラクマのSREチームに配属され、Herokuで動作していた社内アプリケーションをAmazon EKS上に移行。CI/CDパイプラインの構築からデータ移行までを担当。
+                            </div>
+                            
+                            <div class="achievements">
+                                <h4>主要な成果</h4>
+                                <ul>
+                                    <li>HerokuからAmazon EKSへの完全移行を成功</li>
+                                    <li>CI/CDパイプラインの構築</li>
+                                    <li>Terraformを用いたインフラのコード化</li>
+                                    <li>データ移行計画の策定と実行</li>
+                                </ul>
+                            </div>
+
+                            <div class="project-details">
+                                <div class="detail-item">
+                                    <div class="detail-title">担当領域</div>
+                                    <div class="detail-content">SRE、インフラ設計、CI/CD構築、データ移行</div>
+                                </div>
+                                <div class="detail-item">
+                                    <div class="detail-title">成果物</div>
+                                    <div class="detail-content">技術書での公開（TechBookFest）</div>
+                                </div>
+                            </div>
+                            
+                            <div class="tech-stack">
+                                <span class="tech-tag">TypeScript</span>
+                                <span class="tech-tag">AWS</span>
+                                <span class="tech-tag">Kubernetes</span>
+                                <span class="tech-tag">SRE</span>
+                                <span class="tech-tag">Github Actions</span>
+                                <span class="tech-tag">ArgoCD</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="cta-section">
+                <h2>プロジェクトのご相談をお待ちしています</h2>
+                <p>これらの実績を活かし、あなたのプロジェクトを成功に導きます。</p>
+                <a href="mailto:infokensuke.n@gmail.com" class="cta-button">お問い合わせはこちら</a>
+            </section>
+        </main>
+    </div>
+</body>
+</html> 

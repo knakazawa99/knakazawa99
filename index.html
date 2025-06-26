@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中澤健介 - ソフトウェアエンジニア</title>
+    <meta name="description" content="新潟大学大学院修了、サイバーエージェント・Faciloで活躍するソフトウェアエンジニア。AWS、Go、Python、TypeScriptを得意とし、クラウドネイティブなシステム開発から機械学習基盤構築まで幅広く対応。副業・フリーランス案件歓迎。">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            padding: 60px 0;
+            color: white;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            font-weight: 300;
+        }
+
+        .header .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+
+        .header .tags {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .main-content {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            margin-top: -50px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section {
+            padding: 40px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        .section h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section h2 i {
+            color: #667eea;
+        }
+
+        .profile-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .skill-category {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 4px solid #667eea;
+        }
+
+        .skill-category h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .skill-list li:last-child {
+            border-bottom: none;
+        }
+
+        .skill-name {
+            font-weight: 500;
+            color: #2c3e50;
+            margin-bottom: 3px;
+        }
+
+        .skill-description {
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.4;
+        }
+
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .service-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+
+        .service-card p {
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .contact-item {
+            text-align: center;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-3px);
+            background: #667eea;
+            color: white;
+        }
+
+        .contact-item i {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #667eea;
+        }
+
+        .contact-item:hover i {
+            color: white;
+        }
+
+        .contact-item a {
+            color: inherit;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .social-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            text-decoration: none;
+            color: #333;
+            transition: all 0.3s ease;
+        }
+
+        .social-item:hover {
+            background: #667eea;
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .social-item i {
+            font-size: 1.2rem;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 60px 40px;
+        }
+
+        .cta-section h2 {
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #667eea;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .experience-item {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            border-left: 4px solid #667eea;
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .experience-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .experience-company {
+            color: #667eea;
+            font-weight: 500;
+        }
+
+        .experience-period {
+            background: #667eea;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+        }
+
+        .experience-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .tech-tag {
+            background: #e9ecef;
+            color: #495057;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+        }
+
+        .certifications {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .cert-item {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 15px;
+            border-left: 4px solid #28a745;
+        }
+
+        .cert-item h4 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .cert-item a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        .cert-item a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .section {
+                padding: 20px;
+            }
+            
+            .skills-grid,
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>中澤健介</h1>
+            <div class="subtitle">ソフトウェアエンジニア / フルスタック開発者</div>
+            <div class="tags">
+                <span class="tag">AWS</span>
+                <span class="tag">Go</span>
+                <span class="tag">Python</span>
+                <span class="tag">TypeScript</span>
+                <span class="tag">クラウドネイティブ</span>
+                <span class="tag">機械学習</span>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <section class="section">
+                <h2><i class="fas fa-user"></i>プロフィール</h2>
+                <div class="profile-text">
+                    新潟大学大学院自然科学研究科で工学(情報工学)の修士号を取得し、株式会社サイバーエージェントを経て、現在は株式会社Faciloにてソフトウェアエンジニアとして従事しています。
+                </div>
+                <div class="profile-text">
+                    大学院時代は農業分野へのAI応用を研究テーマとし、査読付きジャーナルと国際会議論文をそれぞれ一本ずつ執筆しました。これまで、Go・Python・TypeScriptなどの言語を扱い、AWSやGCPを活用したクラウドネイティブなシステム開発や、データベースのパフォーマンス改善、機械学習基盤の構築などのプロジェクトを経験してきました。アーキテクチャ設計からチームリードまで幅広く担当しており、WEBシステムを主としたシステム開発にて、要件から実装、運用を行うことができます。
+                </div>
+            </section>
+
+            <section class="section">
+                <h2><i class="fas fa-tools"></i>お手伝い可能な内容</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <h3>クラウドアーキテクチャ設計</h3>
+                        <p>コスト効率、パフォーマンス等を考慮したAWSのアーキテクチャ構築</p>
+                    </div>
+                    <div class="service-card">
+                        <h3>バックエンド開発</h3>
+                        <p>Go、Python、TypeScriptを用いたバックエンドアプリケーションの設計/開発</p>
+                    </div>
+                    <div class="service-card">
+                        <h3>パフォーマンス改善</h3>
+                        <p>SQLのパフォーマンス改善とデータベース最適化</p>
+                    </div>
+                    <div class="service-card">
+                        <h3>インフラのIaC化</h3>
+                        <p>Terraformを用いたインフラのコード化と自動化</p>
+                    </div>
+                    <div class="service-card">
+                        <h3>CI/CD構築</h3>
+                        <p>Github Actions、CircleCI等を用いたCI/CDパイプラインの構築</p>
+                    </div>
+                    <div class="service-card">
+                        <h3>データ基盤構築</h3>
+                        <p>Snowflake、BigQuery等を用いたデータ基盤の設計構築</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2><i class="fas fa-code"></i>技術スキル</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3>プログラミング言語</h3>
+                        <ul class="skill-list">
+                            <li>
+                                <div>
+                                    <div class="skill-name">Go</div>
+                                    <div class="skill-description">高パフォーマンスなバックエンド開発、マイクロサービス構築</div>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <div class="skill-name">Python</div>
+                                    <div class="skill-description">機械学習、データ処理、API開発</div>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <div class="skill-name">TypeScript/JavaScript</div>
+                                    <div class="skill-description">フルスタック開発、Node.js、React</div>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <div class="skill-name">Ruby</div>
+                                    <div class="skill-description">Webアプリケーション開発</div>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <div class="skill-name">Scala</div>
+                                    <div class="skill-description">関数型プログラミング、大規模システム開発</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3>データベース・ストレージ</h3>
+                        <ul class="skill-list">
+                            <li>
+                                <div>
+                                    <div class="skill-name">MySQL</div>
+                                    <div class="skill-description">パフォーマンス最適化、レプリケーション</div>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <div class="skill-name">Redis</div>
+                                    <div class="skill-description">キャッシュ、セッション管理</div>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <div class="skill-name">Redshift/Snowflake</div>
+                                    <div class="skill-description">データウェアハウス、分析基盤</div>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <div class="skill-name">BigQuery</div>
+                                    <div class="skill-description">クラウドデータウェアハウス、分析</div>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <div class="skill-name">DynamoDB</div>
+                                    <div class="skill-description">NoSQL、サーバーレスデータベース</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3>クラウド・インフラ</h3>
+                        <ul class="skill-list">
+                            <li>
+                                <div>
+                                    <div class="skill-name">AWS (ECS/Lambda/Step Functions)</div>
+                                    <div class="skill-description">サーバーレス、コンテナ、ワークフロー</div>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <div class="skill-name">AWS (RDS/Aurora/S3/CloudFront)</div>
+                                    <div class="skill-description">マネージドサービス、ストレージ、CDN</div>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <div class="skill-name">GCP</div>
+                                    <div class="skill-description">Google Cloud Platform、BigQuery</div>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <div class="skill-name">Terraform</div>
+                                    <div class="skill-description">Infrastructure as Code</div>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <div class="skill-name">Kubernetes</div>
+                                    <div class="skill-description">コンテナオーケストレーション</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3>開発・運用ツール</h3>
+                        <ul class="skill-list">
+                            <li>
+                                <div>
+                                    <div class="skill-name">Github Actions/CircleCI</div>
+                                    <div class="skill-description">CI/CD、自動化</div>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <div class="skill-name">Datadog</div>
+                                    <div class="skill-description">監視、ログ管理</div>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <div class="skill-name">dbt</div>
+                                    <div class="skill-description">データ変換、ETL</div>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <div class="skill-name">Docker</div>
+                                    <div class="skill-description">コンテナ化、環境統一</div>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <div class="skill-name">Git</div>
+                                    <div class="skill-description">バージョン管理、コラボレーション</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 30px;">
+                    <a href="skills.html" class="cta-button" style="background: #667eea; color: white;">
+                        <i class="fas fa-arrow-right"></i> スキル詳細を見る
+                    </a>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2><i class="fas fa-briefcase"></i>主要プロジェクト経験</h2>
+                
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <div>
+                            <div class="experience-title">不動産仲介向けプロダクト開発</div>
+                            <div class="experience-company">株式会社Facilo</div>
+                        </div>
+                        <span class="experience-period">2025/01 ~</span>
+                    </div>
+                    <div class="experience-tech">
+                        <span class="tech-tag">Ruby</span>
+                        <span class="tech-tag">TypeScript</span>
+                        <span class="tech-tag">AWS</span>
+                        <span class="tech-tag">CircleCI</span>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <div>
+                            <div class="experience-title">小売りメディア向け広告プロダクト開発</div>
+                            <div class="experience-company">株式会社サイバーエージェント</div>
+                        </div>
+                        <span class="experience-period">2023/05 ~ 2024/12</span>
+                    </div>
+                    <p>リテールメディア向け広告プロダクトの新規開発から参画し、保守運用フェーズまで担当。APIのパフォーマンス改善によりレイテンシを8~10倍改善、Auroraのコストを30%削減。Snowflakeを用いたデータ基盤構築、AWS Step Functionsへのワークフローツール移行をリード。</p>
+                    <div class="experience-tech">
+                        <span class="tech-tag">Go</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Scala</span>
+                        <span class="tech-tag">AWS</span>
+                        <span class="tech-tag">Terraform</span>
+                        <span class="tech-tag">Snowflake</span>
+                        <span class="tech-tag">dbt</span>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <div>
+                            <div class="experience-title">広告画像の自動生成プロジェクト</div>
+                            <div class="experience-company">株式会社サイバーエージェント</div>
+                        </div>
+                        <span class="experience-period">2022/07 ~ 2022/08</span>
+                    </div>
+                    <p>BERTを用いた色変換モデルの実装と画像処理の最適化。NumbaとOpenCVを活用し、処理時間を20秒から2秒に短縮。</p>
+                    <div class="experience-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">GCP</span>
+                        <span class="tech-tag">MLOps</span>
+                        <span class="tech-tag">論文実装</span>
+                    </div>
+                </div>
+
+                <div class="accordion-content" id="projects-content" style="display: none;">
+                    <div class="experience-item">
+                        <div class="experience-header">
+                            <div>
+                                <div class="experience-title">マイクロサービスのバックエンド開発</div>
+                                <div class="experience-company">株式会社サイバーエージェント</div>
+                            </div>
+                            <span class="experience-period">2022/05 ~ 2022/06</span>
+                        </div>
+                        <p>株式会社CAMのマイクロサービスプラットフォームチームでバックエンド領域を担当。分散トレーシングを用いたパフォーマンス改善を実現。バッチ処理の実行時間を65%短縮、APIへのリクエスト数を一日で150万程度削減。</p>
+                        <div class="experience-tech">
+                            <span class="tech-tag">TypeScript</span>
+                            <span class="tech-tag">Datadog</span>
+                            <span class="tech-tag">Google Cloud</span>
+                        </div>
+                    </div>
+
+
+                    <div class="experience-item">
+                        <div class="experience-header">
+                            <div>
+                                <div class="experience-title">アプリのバックエンド開発</div>
+                                <div class="experience-company">株式会社サイバーエージェント（株式会社タップル）</div>
+                            </div>
+                            <span class="experience-period">2022/02 ~ 2022/04</span>
+                        </div>
+                        <p>株式会社タップルにて、バックエンド領域の開発を担当。新たに導入するサブシステムの新機能開発と外部SaaS接続機能を実装。マイクロサービス化に伴う開発コスト増加を抑制するため、OpenAPI GeneratorとMustacheテンプレートを活用したコード自動生成システムを構築。GitHub Actionsのbuild matrixとpath filterを活用し、CI効率化を実現。</p>
+                        <div class="experience-tech">
+                            <span class="tech-tag">TypeScript</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">AWS</span>
+                            <span class="tech-tag">GitHub Actions</span>
+                            <span class="tech-tag">OpenAPI</span>
+                            <span class="tech-tag">MongoDB</span>
+                        </div>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="experience-header">
+                            <div>
+                                <div class="experience-title">社内アプリケーションのKubernetes化プロジェクト</div>
+                                <div class="experience-company">楽天グループ株式会社</div>
+                            </div>
+                            <span class="experience-period">2021/10 ~ 2021/12</span>
+                        </div>
+                        <p>ラクマのSREチームに配属され、Herokuで動作していた社内アプリケーションをAmazon EKS上に移行。CI/CDパイプラインの構築やTerraformを用いたインフラの構築を行い、k8sのリソースをyamlで構築。</p>
+                        <div class="experience-tech">
+                            <span class="tech-tag">TypeScript</span>
+                            <span class="tech-tag">AWS</span>
+                            <span class="tech-tag">Kubernetes</span>
+                            <span class="tech-tag">SRE</span>
+                        </div>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="experience-header">
+                            <div>
+                                <div class="experience-title">HRシステムの開発</div>
+                                <div class="experience-company">ビジョナル株式会社</div>
+                            </div>
+                            <span class="experience-period">2021/08 ~ 2021/09</span>
+                        </div>
+                        <p>ソフトウェアエンジニアとして主に管理画面の開発、マッチングシステムの効率化のプロジェクトに従事。</p>
+                        <div class="experience-tech">
+                            <span class="tech-tag">Java</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">MySQL</span>
+                            <span class="tech-tag">Redis</span>
+                        </div>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="experience-header">
+                            <div>
+                                <div class="experience-title">WEBサービスの開発</div>
+                                <div class="experience-company">株式会社CRMセンター</div>
+                            </div>
+                            <span class="experience-period">2019/10 ~ 2021/07</span>
+                        </div>
+                        <p>WEBエンジニアとして、インフラからフロントまで幅広く開発。マッチングサービスの開発や社内システムリプレイスの要件定義、基本設計フェーズを担当。</p>
+                        <div class="experience-tech">
+                            <span class="tech-tag">Ruby</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">MySQL</span>
+                            <span class="tech-tag">AWS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 30px;">
+                    <button class="accordion-button" onclick="toggleAccordion('projects')" style="background: #667eea; color: white; border: none; padding: 15px 30px; border-radius: 30px; font-weight: bold; font-size: 1.1rem; cursor: pointer; transition: all 0.3s ease;">
+                        <i class="fas fa-chevron-down"></i> 他のプロジェクトを見る
+                    </button>
+                    <a href="projects.html" class="cta-button" style="background: #667eea; color: white; margin-left: 15px;">
+                        <i class="fas fa-arrow-right"></i> プロジェクト詳細を見る
+                    </a>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2><i class="fas fa-code"></i>個人プロジェクト</h2>
+                
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <div>
+                            <div class="experience-title">開発中プロジェクト</div>
+                            <div class="experience-company">愛犬家向けアプリ</div>
+                        </div>
+                        <span class="experience-period">開発中</span>
+                    </div>
+                    <p>愛犬家向けのアプリを開発中です。</p>
+                </div>
+
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <div>
+                            <div class="experience-title">Google Ad Manager の Go SDK 開発</div>
+                            <div class="experience-company">オープンソース</div>
+                        </div>
+                        <span class="experience-period">2023 ~</span>
+                    </div>
+                    <p>Google Ad Manager の公式 Go SDK が存在しないため、WSDL を元に Go の template を使ってコードを自動生成し、SDKベースで利用できるようにしました。</p>
+                    <div class="experience-tech">
+                        <span class="tech-tag">Go</span>
+                        <span class="tech-tag">SOAP</span>
+                        <span class="tech-tag">WSDL</span>
+                        <span class="tech-tag">コード生成</span>
+                    </div>
+                    <div style="margin-top: 15px;">
+                        <a href="https://github.com/knakazawa99/gam-sdk-go" target="_blank" style="color: #667eea; text-decoration: none;">
+                            <i class="fab fa-github"></i> GitHub: knakazawa99/gam-sdk-go
+                        </a>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <div>
+                            <div class="experience-title">Prefect AWSプラグインへ機能追加</div>
+                            <div class="experience-company">OSS コントリビューション</div>
+                        </div>
+                        <span class="experience-period">2023</span>
+                    </div>
+                    <p>Prefect の AWS プラグインに AWS Glue の Job を利用できる機能を追加しました。現在は prefect 本体に吸収されています。</p>
+                    <div class="experience-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">AWS Glue</span>
+                        <span class="tech-tag">Prefect</span>
+                        <span class="tech-tag">OSS</span>
+                    </div>
+                    <div style="margin-top: 15px;">
+                        <a href="https://github.com/PrefectHQ/prefect-aws/pull/308" target="_blank" style="color: #667eea; text-decoration: none;">
+                            <i class="fab fa-github"></i> PR: PrefectHQ/prefect-aws#308
+                        </a>
+                    </div>
+                </div>
+
+                <div class="accordion-content" id="personal-projects-content" style="display: none;">
+                    <div class="experience-item">
+                        <div class="experience-header">
+                            <div>
+                                <div class="experience-title">GPUを利用しているサーバーでの操作効率化のためのCLI開発</div>
+                                <div class="experience-company">研究室プロジェクト</div>
+                            </div>
+                            <span class="experience-period">2022</span>
+                        </div>
+                        <p>GPU搭載Linuxサーバーでの機械学習実行を効率化するCLIツールを開発。Dockerコンテナ内での学習実行、バックグラウンド実行、ログ管理、Slack通知まで一貫して行う機能を提供。</p>
+                        <div class="experience-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Docker</span>
+                            <span class="tech-tag">CLI</span>
+                            <span class="tech-tag">機械学習</span>
+                        </div>
+                        <div style="margin-top: 15px;">
+                            <a href="https://github.com/knakazawa99/GPUContainerRunner" target="_blank" style="color: #667eea; text-decoration: none;">
+                                <i class="fab fa-github"></i> GitHub: knakazawa99/GPUContainerRunner
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="experience-header">
+                            <div>
+                                <div class="experience-title">FitPlace</div>
+                                <div class="experience-company">個人開発</div>
+                            </div>
+                            <span class="experience-period">2021</span>
+                        </div>
+                        <p>筋トレの効率化を図るアプリケーション。筋トレの予定立て、トレーニング内容の保存、リマインド機能を提供。現在はクローズしてソースコードのみ公開。</p>
+                        <div class="experience-tech">
+                            <span class="tech-tag">PHP</span>
+                            <span class="tech-tag">Laravel</span>
+                            <span class="tech-tag">Vue.js</span>
+                            <span class="tech-tag">MySQL</span>
+                            <span class="tech-tag">Redis</span>
+                            <span class="tech-tag">AWS</span>
+                        </div>
+                        <div style="margin-top: 15px;">
+                            <a href="https://github.com/knakazawa99/FitPlace" target="_blank" style="color: #667eea; text-decoration: none;">
+                                <i class="fab fa-github"></i> GitHub: knakazawa99/FitPlace
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 30px;">
+                    <button class="accordion-button" onclick="toggleAccordion('personal-projects')" style="background: #667eea; color: white; border: none; padding: 15px 30px; border-radius: 30px; font-weight: bold; font-size: 1.1rem; cursor: pointer; transition: all 0.3s ease;">
+                        <i class="fas fa-chevron-down"></i> 他のプロジェクトを見る
+                    </button>
+                    <a href="personal-projects.html" class="cta-button" style="background: #667eea; color: white; margin-left: 15px;">
+                        <i class="fas fa-arrow-right"></i> 個人プロジェクト詳細を見る
+                    </a>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2><i class="fas fa-certificate"></i>資格</h2>
+                <div class="certifications">
+                    <div class="cert-item">
+                        <h4>AWS Certified Solutions Architect – Professional</h4>
+                        <a href="https://www.credly.com/badges/ffac768f-433a-4dbc-a907-0d130de12105" target="_blank">認証を確認</a>
+                    </div>
+                    <div class="cert-item">
+                        <h4>AWS Certified Solutions Architect – Associate</h4>
+                        <a href="https://www.credly.com/badges/0ac7753b-434d-4a8b-b6a0-83fa9c7c89ac/public_url" target="_blank">認証を確認</a>
+                    </div>
+                    <div class="cert-item">
+                        <h4>JDLA Deep Learning for GENERAL 2019 #3</h4>
+                        <a href="https://nlp.netlearning.co.jp/ns/portal/openbadge/public/assertions/detail/RE8vaUM4dzBmQkl2Y3BzWE5lKzE2Zz09" target="_blank">認証を確認</a>
+                    </div>
+                    <div class="cert-item">
+                        <h4>基本情報技術者</h4>
+                        <span>第FE-2018-04-09802号</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2><i class="fas fa-share-alt"></i>ソーシャルアカウント</h2>
+                <div class="social-grid">
+                    <a href="https://www.wantedly.com/id/kensuke__nakazawa" class="social-item" target="_blank">
+                        <i class="fab fa-linkedin"></i>
+                        <span>Wantedly</span>
+                    </a>
+                    <a href="https://x.com/kensuke__19" class="social-item" target="_blank">
+                        <i class="fab fa-twitter"></i>
+                        <span>Twitter</span>
+                    </a>
+                    <a href="https://github.com/knakazawa99" class="social-item" target="_blank">
+                        <i class="fab fa-github"></i>
+                        <span>GitHub</span>
+                    </a>
+                    <a href="https://qiita.com/Kensuke-N" class="social-item" target="_blank">
+                        <i class="fas fa-pen"></i>
+                        <span>Qiita</span>
+                    </a>
+                    <a href="https://zenn.dev/kensuke__19" class="social-item" target="_blank">
+                        <i class="fas fa-book"></i>
+                        <span>Zenn</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/%E5%81%A5%E4%BB%8B-%E4%B8%AD%E6%BE%A4-407603224/" class="social-item" target="_blank">
+                        <i class="fab fa-linkedin"></i>
+                        <span>LinkedIn</span>
+                    </a>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2><i class="fas fa-envelope"></i>コンタクト情報</h2>
+                <div class="contact-grid">
+                    <div class="contact-item">
+                        <i class="fab fa-twitter"></i>
+                        <a href="https://twitter.com/kensuke__19" target="_blank">@kensuke__19</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:infokensuke.n@gmail.com">infokensuke.n@gmail.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-linkedin"></i>
+                        <a href="https://www.linkedin.com/in/%E5%81%A5%E4%BB%8B-%E4%B8%AD%E6%BE%A4-407603224/" target="_blank">LinkedIn</a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="cta-section">
+                <h2>プロジェクトのご相談をお待ちしています</h2>
+                <p>クラウドネイティブなシステム開発から機械学習基盤構築まで、幅広い技術スタックでお手伝いできます。</p>
+                <a href="mailto:infokensuke.n@gmail.com" class="cta-button">お問い合わせはこちら</a>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        function toggleAccordion(sectionId) {
+            const content = document.querySelector(`.accordion-content[id="${sectionId}-content"]`) || 
+                           document.querySelector(`.accordion-content:not([id])`);
+            const button = document.querySelector(`.accordion-button[onclick="toggleAccordion('${sectionId}')"]`);
+
+            if (content.style.display === 'none' || content.style.display === '') {
+                content.style.display = 'block';
+                button.innerHTML = '<i class="fas fa-chevron-up"></i> 他のプロジェクトを閉じる';
+            } else {
+                content.style.display = 'none';
+                button.innerHTML = '<i class="fas fa-chevron-down"></i> 他のプロジェクトを見る';
+            }
+        }
+    </script>
+</body>
+</html> 
