@@ -1,532 +1,508 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" data-theme="green">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>個人プロジェクト詳細 - 中澤健介</title>
     <meta name="description" content="中澤健介の個人プロジェクト詳細ページ。Google Ad Manager Go SDK、Prefect AWSプラグイン、GPU CLIツール、FitPlaceなどの個人開発・OSSコントリビューションをご紹介。">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- カスタムカラーテーマ -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary': '#88C999',
+                        'accent': '#4CAF84',
+                        'bg-dark': '#F3F8F4',
+                        'glass': 'rgba(255,255,255,0.6)',
+                        'text-high': '#2E3D34',
+                        'text-muted': '#7D8C85'
+                    }
+                }
+            }
+        }
+    </script>
+    
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        /* カスタムCSS - グラスモーフィズム、3D効果、パララックス */
+        .glass {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
         }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
         }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        .header {
-            text-align: center;
-            padding: 40px 0;
-            color: white;
-        }
-
-        .header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            font-weight: 300;
-        }
-
-        .header .subtitle {
-            font-size: 1.1rem;
-            opacity: 0.9;
-            margin-bottom: 20px;
-        }
-
-        .nav-back {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            color: white;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-weight: 500;
-            transition: opacity 0.3s ease;
-        }
-
-        .nav-back:hover {
-            opacity: 0.8;
-        }
-
-        .main-content {
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            margin-top: -30px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .section {
-            padding: 40px;
-            border-bottom: 1px solid #eee;
-        }
-
-        .section:last-child {
-            border-bottom: none;
-        }
-
-        .section h2 {
-            font-size: 2rem;
-            margin-bottom: 20px;
-            color: #2c3e50;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .section h2 i {
-            color: #667eea;
-        }
-
-        .project-card {
-            background: #f8f9fa;
-            border-radius: 15px;
-            margin-bottom: 30px;
-            border-left: 4px solid #667eea;
-            transition: transform 0.3s ease;
-        }
-
-        .project-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .project-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 25px;
-        }
-
-        .project-title {
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        .project-company {
-            font-size: 1.1rem;
-            opacity: 0.9;
-            margin-bottom: 15px;
-        }
-
-        .project-period {
-            background: rgba(255, 255, 255, 0.2);
-            padding: 5px 12px;
-            border-radius: 15px;
-            font-size: 0.9rem;
-            display: inline-block;
-        }
-
-        .project-content {
-            padding: 25px;
-        }
-
-        .project-description {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #555;
-            margin-bottom: 20px;
-        }
-
-        .project-details {
-            margin-bottom: 20px;
-        }
-
-        .detail-item {
-            margin-bottom: 15px;
-        }
-
-        .detail-title {
-            font-weight: bold;
-            color: #2c3e50;
-            margin-bottom: 5px;
-        }
-
-        .detail-content {
-            color: #555;
-            line-height: 1.6;
-        }
-
-        .tech-stack {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 15px;
-        }
-
-        .tech-tag {
-            background: #667eea;
-            color: white;
-            padding: 6px 12px;
-            border-radius: 15px;
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-
-        .github-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: #333;
-            color: white;
-            padding: 10px 15px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 500;
+        
+        .glass-button {
+            background: rgba(136, 201, 153, 0.2);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(76, 175, 132, 0.3);
             transition: all 0.3s ease;
-            margin-top: 15px;
         }
-
-        .github-link:hover {
-            background: #555;
+        
+        .glass-button:hover {
+            background: rgba(136, 201, 153, 0.4);
+            border-color: rgba(76, 175, 132, 0.6);
             transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(76, 175, 132, 0.3);
         }
-
-        .achievements {
-            background: #e8f5e8;
-            border-left: 4px solid #28a745;
-            padding: 20px;
-            border-radius: 10px;
-            margin: 20px 0;
-        }
-
-        .achievements h4 {
-            color: #28a745;
-            margin-bottom: 10px;
-            font-size: 1.1rem;
-        }
-
-        .achievements ul {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .achievements li {
-            padding: 5px 0;
-            color: #2c3e50;
-            position: relative;
-            padding-left: 20px;
-        }
-
-        .achievements li:before {
-            content: "✓";
-            color: #28a745;
-            font-weight: bold;
-            position: absolute;
-            left: 0;
-        }
-
-        .challenges {
-            background: #fff3cd;
-            border-left: 4px solid #ffc107;
-            padding: 20px;
-            border-radius: 10px;
-            margin: 20px 0;
-        }
-
-        .challenges h4 {
-            color: #856404;
-            margin-bottom: 10px;
-            font-size: 1.1rem;
-        }
-
-        .challenges ul {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .challenges li {
-            padding: 5px 0;
-            color: #2c3e50;
-            position: relative;
-            padding-left: 20px;
-        }
-
-        .challenges li:before {
-            content: "⚡";
-            color: #ffc107;
-            font-weight: bold;
-            position: absolute;
-            left: 0;
-        }
-
-        .cta-section {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            text-align: center;
-            padding: 60px 40px;
-        }
-
-        .cta-section h2 {
-            color: white;
-            margin-bottom: 20px;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: white;
-            color: #667eea;
-            padding: 15px 30px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1rem;
+        
+        .tilt-3d {
             transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transform: translateZ(0);
         }
-
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        
+        .tilt-3d:hover {
+            transform: translateZ(20px) scale(1.02);
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.15),
+                0 8px 16px rgba(0, 0, 0, 0.1);
         }
-
+        
+        .noise-bg {
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E");
+        }
+        
+        .grid-bg {
+            background-image: 
+                linear-gradient(rgba(76, 175, 132, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(76, 175, 132, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+        
+        .particle {
+            position: absolute;
+            background: rgba(76, 175, 132, 0.3);
+            border-radius: 50%;
+            animation: float 8s ease-in-out infinite;
+        }
+        
+        .particle:nth-child(1) { width: 4px; height: 4px; left: 10%; animation-delay: 0s; }
+        .particle:nth-child(2) { width: 6px; height: 6px; left: 20%; animation-delay: 2s; }
+        .particle:nth-child(3) { width: 3px; height: 3px; left: 30%; animation-delay: 4s; }
+        .particle:nth-child(4) { width: 5px; height: 5px; left: 40%; animation-delay: 6s; }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        /* スムーズスクロール */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* カスタムスクロールバー */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #F3F8F4;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #88C999;
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #4CAF84;
+        }
+        
+        /* レスポンシブ調整 */
         @media (max-width: 768px) {
-            .header h1 {
-                font-size: 2rem;
+            .glass {
+                backdrop-filter: blur(8px);
             }
-            
-            .section {
-                padding: 20px;
+            .particle {
+                display: none;
             }
-            
-            .nav-back {
-                position: relative;
-                top: auto;
-                left: auto;
-                margin-bottom: 20px;
-                justify-content: center;
+        }
+        
+        /* アクセシビリティ - 動きを減らしたい場合 */
+        @media (prefers-reduced-motion: reduce) {
+            .particle, .tilt-3d {
+                animation: none;
+                transform: none;
             }
         }
     </style>
 </head>
-<body>
-    <div class="container">
-        <a href="index.html" class="nav-back">
-            <i class="fas fa-arrow-left"></i>
+<body class="bg-bg-dark text-text-high font-sans antialiased overflow-x-hidden">
+    
+    <!-- パララックス背景レイヤー -->
+    <div class="fixed inset-0 pointer-events-none">
+        <div class="absolute inset-0 grid-bg opacity-20"></div>
+        <div class="absolute inset-0 noise-bg"></div>
+        <div class="particle" data-depth="0.1"></div>
+        <div class="particle" data-depth="0.2"></div>
+        <div class="particle" data-depth="0.3"></div>
+        <div class="particle" data-depth="0.4"></div>
+    </div>
+
+    <!-- ナビゲーションヘッダー -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass backdrop-blur-md">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="text-xl font-bold text-accent">中澤健介</div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="hover:text-accent transition-colors">ホーム</a>
+                    <a href="projects.html" class="hover:text-accent transition-colors">プロジェクト</a>
+                    <a href="skills.html" class="hover:text-accent transition-colors">スキル</a>
+                </div>
+                <button class="glass-button px-6 py-2 rounded-full text-sm font-medium">
+                    相談する
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- メインコンテンツ -->
+    <div class="container mx-auto px-6 pt-24">
+        <a href="index.html" class="inline-flex items-center gap-2 text-accent hover:text-accent/80 transition-colors mb-8">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
             ホームに戻る
         </a>
 
-        <header class="header">
-            <h1>個人プロジェクト詳細</h1>
-            <div class="subtitle">個人開発・OSSコントリビューション</div>
+        <header class="text-center mb-16">
+            <h1 class="text-5xl md:text-6xl font-bold mb-6 text-text-high">
+                個人プロジェクト詳細
+            </h1>
+            <div class="text-xl text-text-muted">個人開発・OSSコントリビューション</div>
         </header>
 
-        <main class="main-content">
-            <section class="section">
+        <main>
+            <section class="mb-20">
                 <!-- 開発中プロジェクト -->
-                <div class="project-card">
-                    <div class="project-header">
-                        <div class="project-title">開発中プロジェクト</div>
-                        <div class="project-company">愛犬家向けアプリ</div>
-                        <span class="project-period">開発中</span>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-description">
+                <div class="glass-card rounded-2xl overflow-hidden tilt-3d group cursor-pointer mb-8">
+                    <div class="p-8">
+                        <div class="mb-6">
+                            <h3 class="text-2xl font-bold mb-3 text-text-high">わんまっぷ</h3>
+                            <div class="text-lg text-accent mb-2">愛犬家向けアプリ</div>
+                            <span class="bg-accent/20 text-accent px-3 py-1 rounded-full text-sm">開発中</span>
+                        </div>
+                        
+                        <div class="text-text-muted text-lg leading-relaxed">
                             愛犬家向けのアプリを開発中です。詳細は準備中です。
                         </div>
+
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="bg-primary/20 text-accent px-3 py-1 rounded-full text-sm">Go</span>
+                            <span class="bg-primary/20 text-accent px-3 py-1 rounded-full text-sm">Flutter</span>
+                            <span class="bg-primary/20 text-accent px-3 py-1 rounded-full text-sm">Google Cloud</span>
+                            <span class="bg-primary/20 text-accent px-3 py-1 rounded-full text-sm">Cloudflare</span>
+                        </div>
+
+                        <a href="https://lp.wanmap.net/" class="glass-button px-6 py-3 rounded-full text-sm font-medium inline-flex items-center gap-2" target="_blank">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/>
+                            </svg>
+                            LP
+                        </a>
                     </div>
                 </div>
 
                 <!-- Google Ad Manager の Go SDK 開発 -->
-                <div class="project-card">
-                    <div class="project-header">
-                        <div class="project-title">Google Ad Manager の Go SDK 開発</div>
-                        <div class="project-company">オープンソース</div>
-                        <span class="project-period">2023 ~</span>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-description">
+                <div class="glass-card rounded-2xl overflow-hidden tilt-3d group cursor-pointer mb-8">
+                    <div class="p-8">
+                        <div class="mb-6">
+                            <h3 class="text-2xl font-bold mb-3 text-text-high">Google Ad Manager の Go SDK 開発</h3>
+                            <div class="text-lg text-accent mb-2">オープンソース</div>
+                            <span class="bg-accent/20 text-accent px-3 py-1 rounded-full text-sm">2023 ~</span>
+                        </div>
+                        
+                        <div class="text-text-muted mb-6 text-lg leading-relaxed">
                             Google Ad Manager では SOAP 形式のAPIを提供しており、SOAP API は現在利用するプロトコルとしてファーストチョイスにはなっていません。そのため、SDKを利用するのが一般的な利用方法になりますが、公式には Go に対しての SDK は公開されていません。
                         </div>
                         
-                        <div class="achievements">
-                            <h4>解決した課題</h4>
-                            <ul>
-                                <li>Go言語から Google Ad Manager の API に対してSDKベースの利用を実現</li>
-                                <li>公開された WSDL を元に Go の template を使ってコードを自動生成</li>
-                                <li>利用者側はSDKベースで利用できる環境を構築</li>
+                        <div class="glass-card p-6 rounded-xl mb-6 border-l-4 border-accent">
+                            <h4 class="text-lg font-bold text-accent mb-4">解決した課題</h4>
+                            <ul class="space-y-2 text-text-muted">
+                                <li class="flex items-start gap-2">
+                                    <span class="text-accent mt-1">✓</span>
+                                    <span>Go言語から Google Ad Manager の API に対してSDKベースの利用を実現</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-accent mt-1">✓</span>
+                                    <span>公開された WSDL を元に Go の template を使ってコードを自動生成</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-accent mt-1">✓</span>
+                                    <span>利用者側はSDKベースで利用できる環境を構築</span>
+                                </li>
                             </ul>
                         </div>
 
-                        <div class="challenges">
-                            <h4>技術的課題</h4>
-                            <ul>
-                                <li>抽象化されたクラスが Go言語に対して上手く適用できない問題</li>
-                                <li>全ての機能を提供するには至っていない状況</li>
-                                <li>SOAP API の複雑な構造の Go への変換</li>
+                        <div class="glass-card p-6 rounded-xl mb-6 border-l-4 border-yellow-500">
+                            <h4 class="text-lg font-bold text-yellow-500 mb-4">技術的課題</h4>
+                            <ul class="space-y-2 text-text-muted">
+                                <li class="flex items-start gap-2">
+                                    <span class="text-yellow-500 mt-1">⚡</span>
+                                    <span>抽象化されたクラスが Go言語に対して上手く適用できない問題</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-yellow-500 mt-1">⚡</span>
+                                    <span>全ての機能を提供するには至っていない状況</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-yellow-500 mt-1">⚡</span>
+                                    <span>SOAP API の複雑な構造の Go への変換</span>
+                                </li>
                             </ul>
                         </div>
 
-                        <div class="tech-stack">
-                            <span class="tech-tag">Go</span>
-                            <span class="tech-tag">SOAP</span>
-                            <span class="tech-tag">WSDL</span>
-                            <span class="tech-tag">コード生成</span>
-                            <span class="tech-tag">Google Ad Manager</span>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="bg-primary/20 text-accent px-3 py-1 rounded-full text-sm">Go</span>
+                            <span class="bg-primary/20 text-accent px-3 py-1 rounded-full text-sm">SOAP</span>
+                            <span class="bg-primary/20 text-accent px-3 py-1 rounded-full text-sm">WSDL</span>
+                            <span class="bg-primary/20 text-accent px-3 py-1 rounded-full text-sm">コード生成</span>
+                            <span class="bg-primary/20 text-accent px-3 py-1 rounded-full text-sm">Google Ad Manager</span>
                         </div>
 
-                        <a href="https://github.com/knakazawa99/gam-sdk-go" class="github-link" target="_blank">
-                            <i class="fab fa-github"></i>
+                        <a href="https://github.com/knakazawa99/gam-sdk-go" class="glass-button px-6 py-3 rounded-full text-sm font-medium inline-flex items-center gap-2" target="_blank">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
                             GitHub: knakazawa99/gam-sdk-go
                         </a>
                     </div>
                 </div>
 
                 <!-- Prefect AWSプラグインへ機能追加 -->
-                <div class="project-card">
-                    <div class="project-header">
-                        <div class="project-title">Prefect AWSプラグインへ機能追加</div>
-                        <div class="project-company">OSS コントリビューション</div>
-                        <span class="project-period">2023</span>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-description">
+                <div class="glass-card rounded-2xl overflow-hidden tilt-3d group cursor-pointer mb-8">
+                    <div class="p-8">
+                        <div class="mb-6">
+                            <h3 class="text-2xl font-bold mb-3 text-text-high">Prefect AWSプラグインへ機能追加</h3>
+                            <div class="text-lg text-accent mb-2">OSS コントリビューション</div>
+                            <span class="bg-accent/20 text-accent px-3 py-1 rounded-full text-sm">2023</span>
+                        </div>
+                        
+                        <div class="text-text-muted mb-6 text-lg leading-relaxed">
                             Prefect が利用しているAWS プラグインから AWS Glue の Job を利用できるように機能追加を行いました。関わっていたプロダクトにて採用されていた ワークフローツールにて、利用したい機能がなかったため、OSS の prefect-awsにコントリビューションを行いました。
                         </div>
                         
-                        <div class="achievements">
-                            <h4>成果</h4>
-                            <ul>
-                                <li>AWS Glue の Job を利用できる機能を追加</li>
-                                <li>Prefect 本体に吸収されるまでに至った</li>
-                                <li>OSS コミュニティへの貢献</li>
+                        <div class="glass-card p-6 rounded-xl mb-6 border-l-4 border-accent">
+                            <h4 class="text-lg font-bold text-accent mb-4">成果</h4>
+                            <ul class="space-y-2 text-text-muted">
+                                <li class="flex items-start gap-2">
+                                    <span class="text-accent mt-1">✓</span>
+                                    <span>AWS Glue の Job を利用できる機能を追加</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-accent mt-1">✓</span>
+                                    <span>Prefect 本体に吸収されるまでに至った</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-accent mt-1">✓</span>
+                                    <span>OSS コミュニティへの貢献</span>
+                                </li>
                             </ul>
                         </div>
 
-                        <div class="tech-stack">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">AWS Glue</span>
-                            <span class="tech-tag">Prefect</span>
-                            <span class="tech-tag">OSS</span>
-                            <span class="tech-tag">ワークフロー</span>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="bg-primary/20 text-accent px-3 py-1 rounded-full text-sm">Python</span>
+                            <span class="bg-primary/20 text-accent px-3 py-1 rounded-full text-sm">AWS Glue</span>
+                            <span class="bg-primary/20 text-accent px-3 py-1 rounded-full text-sm">Prefect</span>
+                            <span class="bg-primary/20 text-accent px-3 py-1 rounded-full text-sm">OSS</span>
+                            <span class="bg-primary/20 text-accent px-3 py-1 rounded-full text-sm">ワークフロー</span>
                         </div>
 
-                        <a href="https://github.com/PrefectHQ/prefect-aws/pull/308" class="github-link" target="_blank">
-                            <i class="fab fa-github"></i>
+                        <a href="https://github.com/PrefectHQ/prefect-aws/pull/308" class="glass-button px-6 py-3 rounded-full text-sm font-medium inline-flex items-center gap-2" target="_blank">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/>
+                            </svg>
                             PR: PrefectHQ/prefect-aws#308
                         </a>
                     </div>
                 </div>
 
                 <!-- GPUを利用しているサーバーでの操作効率化のためのCLI開発 -->
-                <div class="project-card">
-                    <div class="project-header">
-                        <div class="project-title">GPUを利用しているサーバーでの操作効率化のためのCLI開発</div>
-                        <div class="project-company">研究室プロジェクト</div>
-                        <span class="project-period">2022</span>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-description">
+                <div class="glass-card rounded-2xl overflow-hidden tilt-3d group cursor-pointer mb-8">
+                    <div class="p-8">
+                        <div class="mb-6">
+                            <h3 class="text-2xl font-bold mb-3 text-text-high">GPUを利用しているサーバーでの操作効率化のためのCLI開発</h3>
+                            <div class="text-lg text-accent mb-2">研究室プロジェクト</div>
+                            <span class="bg-accent/20 text-accent px-3 py-1 rounded-full text-sm">2022</span>
+                        </div>
+                        
+                        <div class="text-text-muted mb-6 text-lg leading-relaxed">
                             所属した研究室では、何台か GPU を搭載した Linux サーバーを有していました。その中で、研究を行う学生は、Pythonのコマンドで機械学習のモデルを学習するプログラムを実行し、実行中はサーバーに接続しているPCからのコネクションが切られない様に注意する必要がありました。また、実行環境は Anacondaで構築され、環境の再現性が薄いことが課題となっていました。
                         </div>
                         
-                        <div class="achievements">
-                            <h4>解決した課題</h4>
-                            <ul>
-                                <li>Dockerコンテナ内で機械学習を行う環境を構築</li>
-                                <li>バックグラウンド実行機能を実装</li>
-                                <li>学習のバックグラウンド実行からそのログ、実行完了後のSlack通知までを一貫して行う機能を提供</li>
-                                <li>環境の再現性を向上</li>
+                        <div class="glass-card p-6 rounded-xl mb-6 border-l-4 border-accent">
+                            <h4 class="text-lg font-bold text-accent mb-4">解決した課題</h4>
+                            <ul class="space-y-2 text-text-muted">
+                                <li class="flex items-start gap-2">
+                                    <span class="text-accent mt-1">✓</span>
+                                    <span>Dockerコンテナ内で機械学習を行う環境を構築</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-accent mt-1">✓</span>
+                                    <span>バックグラウンド実行機能を実装</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-accent mt-1">✓</span>
+                                    <span>学習のバックグラウンド実行からそのログ、実行完了後のSlack通知までを一貫して行う機能を提供</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-accent mt-1">✓</span>
+                                    <span>環境の再現性を向上</span>
+                                </li>
                             </ul>
                         </div>
 
-                        <div class="challenges">
-                            <h4>技術的課題</h4>
-                            <ul>
-                                <li>GPU搭載サーバーでのDocker環境構築</li>
-                                <li>長時間実行される機械学習タスクの管理</li>
-                                <li>複数ユーザーでのGPUリソース共有</li>
-                                <li>Anaconda環境からDocker環境への移行</li>
+                        <div class="glass-card p-6 rounded-xl mb-6 border-l-4 border-yellow-500">
+                            <h4 class="text-lg font-bold text-yellow-500 mb-4">技術的課題</h4>
+                            <ul class="space-y-2 text-text-muted">
+                                <li class="flex items-start gap-2">
+                                    <span class="text-yellow-500 mt-1">⚡</span>
+                                    <span>GPU搭載サーバーでのDocker環境構築</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-yellow-500 mt-1">⚡</span>
+                                    <span>長時間実行される機械学習タスクの管理</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-yellow-500 mt-1">⚡</span>
+                                    <span>複数ユーザーでのGPUリソース共有</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-yellow-500 mt-1">⚡</span>
+                                    <span>Anaconda環境からDocker環境への移行</span>
+                                </li>
                             </ul>
                         </div>
 
-                        <div class="tech-stack">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Docker</span>
-                            <span class="tech-tag">CLI</span>
-                            <span class="tech-tag">機械学習</span>
-                            <span class="tech-tag">GPU</span>
-                            <span class="tech-tag">Slack API</span>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="bg-primary/20 text-accent px-3 py-1 rounded-full text-sm">Python</span>
+                            <span class="bg-primary/20 text-accent px-3 py-1 rounded-full text-sm">Docker</span>
+                            <span class="bg-primary/20 text-accent px-3 py-1 rounded-full text-sm">CLI</span>
+                            <span class="bg-primary/20 text-accent px-3 py-1 rounded-full text-sm">機械学習</span>
+                            <span class="bg-primary/20 text-accent px-3 py-1 rounded-full text-sm">GPU</span>
+                            <span class="bg-primary/20 text-accent px-3 py-1 rounded-full text-sm">Slack API</span>
                         </div>
 
-                        <a href="https://github.com/knakazawa99/GPUContainerRunner" class="github-link" target="_blank">
-                            <i class="fab fa-github"></i>
+                        <a href="https://github.com/knakazawa99/GPUContainerRunner" class="glass-button px-6 py-3 rounded-full text-sm font-medium inline-flex items-center gap-2" target="_blank">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
                             GitHub: knakazawa99/GPUContainerRunner
                         </a>
                     </div>
                 </div>
 
                 <!-- FitPlace -->
-                <div class="project-card">
-                    <div class="project-header">
-                        <div class="project-title">FitPlace</div>
-                        <div class="project-company">個人開発</div>
-                        <span class="project-period">2021</span>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-description">
+                <div class="glass-card rounded-2xl overflow-hidden tilt-3d group cursor-pointer mb-8">
+                    <div class="p-8">
+                        <div class="mb-6">
+                            <h3 class="text-2xl font-bold mb-3 text-text-high">FitPlace</h3>
+                            <div class="text-lg text-accent mb-2">個人開発</div>
+                            <span class="text-accent px-3 py-1 rounded-full text-sm">2021</span>
+                        </div>
+                        
+                        <div class="text-text-muted mb-6 text-lg leading-relaxed">
                             筋トレの効率化を図るために、自身が抱えていた筋トレの予定を立てることを可能にし、筋トレの予定、トレーニング内容の保存、リマインドを主に行うアプリケーション。
                         </div>
                         
-                        <div class="achievements">
-                            <h4>実装した機能</h4>
-                            <ul>
-                                <li>筋トレの予定立て機能</li>
-                                <li>トレーニング内容の保存</li>
-                                <li>リマインド機能</li>
-                                <li>フルスタックWebアプリケーション</li>
+                        <div class="glass-card p-6 rounded-xl mb-6 border-l-4 border-accent">
+                            <h4 class="text-lg font-bold text-accent mb-4">実装した機能</h4>
+                            <ul class="space-y-2 text-text-muted">
+                                <li class="flex items-start gap-2">
+                                    <span class="text-accent mt-1">✓</span>
+                                    <span>筋トレの予定立て機能</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-accent mt-1">✓</span>
+                                    <span>トレーニング内容の保存</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-accent mt-1">✓</span>
+                                    <span>リマインド機能</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-accent mt-1">✓</span>
+                                    <span>フルスタックWebアプリケーション</span>
+                                </li>
                             </ul>
                         </div>
 
-                        <div class="challenges">
-                            <h4>技術的課題</h4>
-                            <ul>
-                                <li>Laravel + Vue.js でのフルスタック開発</li>
-                                <li>AWS EC2でのデプロイ</li>
-                                <li>CI/CDパイプラインの構築</li>
-                                <li>現在はクローズしてソースコードのみ公開</li>
+                        <div class="glass-card p-6 rounded-xl mb-6 border-l-4 border-yellow-500">
+                            <h4 class="text-lg font-bold text-yellow-500 mb-4">技術的課題</h4>
+                            <ul class="space-y-2 text-text-muted">
+                                <li class="flex items-start gap-2">
+                                    <span class="text-yellow-500 mt-1">⚡</span>
+                                    <span>Laravel + Vue.js でのフルスタック開発</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-yellow-500 mt-1">⚡</span>
+                                    <span>AWS EC2でのデプロイ</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-yellow-500 mt-1">⚡</span>
+                                    <span>CI/CDパイプラインの構築</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-yellow-500 mt-1">⚡</span>
+                                    <span>現在はクローズしてソースコードのみ公開</span>
+                                </li>
                             </ul>
                         </div>
 
-                        <div class="tech-stack">
-                            <span class="tech-tag">PHP</span>
-                            <span class="tech-tag">Laravel</span>
-                            <span class="tech-tag">Vue.js</span>
-                            <span class="tech-tag">MySQL</span>
-                            <span class="tech-tag">Redis</span>
-                            <span class="tech-tag">AWS</span>
-                            <span class="tech-tag">GitHub Actions</span>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="bg-primary/20 text-accent px-3 py-1 rounded-full text-sm">PHP</span>
+                            <span class="bg-primary/20 text-accent px-3 py-1 rounded-full text-sm">Laravel</span>
+                            <span class="bg-primary/20 text-accent px-3 py-1 rounded-full text-sm">Vue.js</span>
+                            <span class="bg-primary/20 text-accent px-3 py-1 rounded-full text-sm">MySQL</span>
+                            <span class="bg-primary/20 text-accent px-3 py-1 rounded-full text-sm">Redis</span>
+                            <span class="bg-primary/20 text-accent px-3 py-1 rounded-full text-sm">AWS</span>
+                            <span class="bg-primary/20 text-accent px-3 py-1 rounded-full text-sm">GitHub Actions</span>
                         </div>
 
-                        <a href="https://github.com/knakazawa99/FitPlace" class="github-link" target="_blank">
-                            <i class="fab fa-github"></i>
+                        <a href="https://github.com/knakazawa99/FitPlace" class="glass-button px-6 py-3 rounded-full text-sm font-medium inline-flex items-center gap-2" target="_blank">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
                             GitHub: knakazawa99/FitPlace
                         </a>
                     </div>
                 </div>
             </section>
 
-            <section class="cta-section">
-                <h2>プロジェクトのご相談をお待ちしています</h2>
-                <p>これらの個人プロジェクトの経験を活かし、あなたのプロジェクトを成功に導きます。</p>
-                <a href="mailto:infokensuke.n@gmail.com" class="cta-button">お問い合わせはこちら</a>
+            <section class="glass-card p-12 rounded-2xl text-center">
+                <h2 class="text-3xl font-bold mb-6 text-text-high">プロジェクトのご相談をお待ちしています</h2>
+                <p class="text-xl text-text-muted mb-8">これらの個人プロジェクトの経験を活かし、あなたのプロジェクトを成功に導きます。</p>
+                <a href="mailto:infokensuke.n@gmail.com" class="glass-button px-8 py-4 rounded-full text-lg font-semibold inline-block">
+                    お問い合わせはこちら
+                </a>
             </section>
         </main>
     </div>
+
+    <!-- JavaScript for 3D Tilt Effect -->
+    <script>
+        // 3D Tilt Effect
+        function initTilt3D() {
+            // 3Dチルト効果は削除し、CSSの浮き出し効果のみを使用
+            console.log('3D Tilt effect disabled - using CSS hover effects instead');
+        }
+
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            initTilt3D();
+        });
+    </script>
 </body>
 </html> 
