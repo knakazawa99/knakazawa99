@@ -287,11 +287,8 @@
                     <a href="projects.html" class="hover:text-accent transition-colors">プロジェクト</a>
                     <a href="skills.html" class="hover:text-accent transition-colors">スキル</a>
                     <a href="personal-projects.html" class="hover:text-accent transition-colors">個人プロジェクト</a>
-                    <a href="#contact" class="hover:text-accent transition-colors">お問い合わせ</a>
                 </div>
-                <button class="glass-button px-6 py-2 rounded-full text-sm font-medium">
-                    相談する
-                </button>
+                <a href="index.html#contact" class="glass-button px-6 py-2 rounded-full text-sm font-medium hover:text-accent transition-colors">相談する</a>
             </div>
         </nav>
     </header>
@@ -300,13 +297,17 @@
     <section class="relative min-h-[80vh] flex items-center justify-center pt-20">
         <div class="container mx-auto px-6 text-center">
             <div class="max-w-4xl mx-auto">
-                <h1 class="text-5xl md:text-7xl font-bold mb-6 text-text-high">
-                    <span class="text-accent">中澤健介</span>
-                    <!-- <span class="text-accent">クラウド</span>と<span class="text-accent">データ</span>で、<br>
-                    成果の出る設計を。 -->
-                </h1>
+                <!-- Profile Image and Name -->
+                <div class="flex flex-col md:flex-row items-center justify-center gap-6 mb-8">
+                    <img src="profile.JPG" alt="中澤健介のプロフィール写真" class="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover border-4 border-accent/20 shadow-lg flex-shrink-0">
+                    <h1 class="text-5xl md:text-7xl font-bold text-text-high">
+                        <span class="text-accent">中澤 健介</span>
+                        <!-- <span class="text-accent">クラウド</span>と<span class="text-accent">データ</span>で、<br>
+                        成果の出る設計を。 -->
+                    </h1>
+                </div>
                 <p class="text-xl md:text-2xl text-text-muted mb-8 max-w-2xl mx-auto">
-                    Webを主軸としたソフトウェアエンジニアとして、システム開発に伴奏します。
+                    Webを主軸としたソフトウェアエンジニアとして<br>システム開発に伴奏します。
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
                     <a href="projects.html" class="glass-button px-8 py-4 rounded-full text-lg font-semibold hover:scale-105 transition-transform inline-block">
@@ -353,13 +354,13 @@
                 </a>
 
                 <!-- Project Card 3 -->
-                <a href="projects.html" class="glass-card rounded-2xl overflow-hidden tilt-3d group cursor-pointer block hover:scale-105 transition-transform">
+                <a href="personal-projects.html" class="glass-card rounded-2xl overflow-hidden tilt-3d group cursor-pointer block hover:scale-105 transition-transform">
                     <div class="p-6">
-                        <h3 class="text-xl font-bold mb-3 text-text-high">社内アプリケーションのKubernetes化</h3>
-                        <p class="text-text-muted mb-4">HerokuからAmazon EKSへの完全移行、CI/CDパイプラインの構築、Terraformを用いたインフラのコード化</p>
+                        <h3 class="text-xl font-bold mb-3 text-text-high">愛犬家向けアプリ「わんまっぷ」</h3>
+                        <p class="text-text-muted mb-4">愛犬家向けのアプリを開発中です。詳細は準備中です。</p>
                         <div class="flex items-center justify-between">
-                            <span class="text-sm text-accent">TypeScript, AWS, Kubernetes</span>
-                            <span class="text-sm text-text-muted">2021</span>
+                            <span class="text-sm text-accent">Go, Flutter, Google Cloud, Cloudflare</span>
+                            <span class="text-sm text-text-muted">2025~</span>
                         </div>
                     </div>
                 </a>
@@ -386,7 +387,7 @@
                     <div class="h-full flex flex-col justify-between">
                         <div>
                             <h3 class="text-2xl font-bold mb-4 text-accent">クラウド・インフラ</h3>
-                            <p class="text-text-muted mb-4">AWS/GCPでの大規模システム設計・運用。Terraform、KubernetesでのIaC実装。</p>
+                            <p class="text-text-muted mb-4">AWS/GCPを用いたアーキテクチャ設計、構築。Terraformを用いたIaC実装</p>
                         </div>
                         <div class="flex flex-wrap gap-2">
                             <span class="bg-primary/20 text-accent px-3 py-1 rounded-full text-sm">AWS</span>
@@ -399,25 +400,25 @@
                 <!-- Backend Development -->
                 <a href="skills.html" class="glass-card p-6 rounded-2xl group hover:scale-105 transition-transform block">
                     <h3 class="text-xl font-bold mb-3 text-accent">バックエンド開発</h3>
-                    <p class="text-text-muted text-sm">Go、Python、TypeScriptでのマイクロサービス開発。高パフォーマンスAPI設計。</p>
+                    <p class="text-text-muted text-sm">Go、Python、TypeScriptを用いたバックエンド開発。</p>
                 </a>
 
                 <!-- Data Engineering -->
                 <a href="skills.html" class="glass-card p-6 rounded-2xl group hover:scale-105 transition-transform block">
                     <h3 class="text-xl font-bold mb-3 text-accent">データエンジニアリング</h3>
-                    <p class="text-text-muted text-sm">BigQuery、Snowflakeでのデータウェアハウス構築。ETL/ELTパイプライン設計。</p>
+                    <p class="text-text-muted text-sm">Redshift、BigQuery、Snowflakeを用いたデータウェアハウス構築。ETL/ELTパイプライン設計。</p>
                 </a>
 
                 <!-- DevOps & Monitoring -->
                 <a href="skills.html" class="glass-card p-6 rounded-2xl group hover:scale-105 transition-transform block">
                     <h3 class="text-xl font-bold mb-3 text-accent">DevOps・監視</h3>
-                    <p class="text-text-muted text-sm">CI/CD、ログ管理、メトリクス収集。GitHub Actions、ArgoCDでの自動化。</p>
+                    <p class="text-text-muted text-sm">CI/CDでの自動化、監視ツール(Datadog, CloudWatch)を用いた監視の構築。</p>
                 </a>
 
                 <!-- Security -->
                 <a href="skills.html" class="glass-card p-6 rounded-2xl group hover:scale-105 transition-transform block">
-                    <h3 class="text-xl font-bold mb-3 text-accent">セキュリティ</h3>
-                    <p class="text-text-muted text-sm">OWASP Top 10対策、認証・認可設計。セキュリティ監査・ペネトレーションテスト。</p>
+                    <h3 class="text-xl font-bold mb-3 text-accent">フロントエンド</h3>
+                    <p class="text-text-muted text-sm">React、Next.js、TypeScriptを用いたフロントエンド開発。</p>
                 </a>
             </div>
             
@@ -506,16 +507,16 @@
                             <div class="ml-16 glass-card p-6 rounded-2xl flex-1 tilt-3d">
                                 <div class="text-sm text-accent mb-2">2023/05 - 2024/12</div>
                                 <h3 class="text-xl font-bold mb-2 text-text-high">株式会社サイバーエージェント</h3>
-                                <p class="text-text-muted">小売りメディア向け広告プロダクトの新規開発から参画。APIのパフォーマンス改善によりレイテンシを8~10倍改善。</p>
+                                <p class="text-text-muted">小売りメディア向け広告プロダクトの新規開発から参画。レポーティング基盤をはじめ、要件から設計、開発、テスト、運用までを担当。</p>
                             </div>
                         </div>
 
                         <div class="relative flex items-start">
                             <div class="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 bg-accent rounded-full z-20"></div>
                             <div class="ml-16 glass-card p-6 rounded-2xl flex-1 tilt-3d">
-                                <div class="text-sm text-accent mb-2">2021/10 - 2021/12</div>
-                                <h3 class="text-xl font-bold mb-2 text-text-high">楽天グループ株式会社</h3>
-                                <p class="text-text-muted">ラクマのSREチームに配属。Herokuで動作していた社内アプリケーションをAmazon EKS上に移行。</p>
+                                <div class="text-sm text-accent mb-2">2022/02 - 2023/03</div>
+                                <h3 class="text-xl font-bold mb-2 text-text-high">株式会社サイバーエージェント</h3>
+                                <p class="text-text-muted">アプリのバックエンド、広告クリエイティブ生成システムのML/Ops、マイクロサービスのバックエンド開発など</p>
                             </div>
                         </div>
                     </div>
@@ -558,14 +559,20 @@
                             <div class="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
                                 <span class="text-2xl">🚀</span>
                             </div>
-                            <h3 class="font-bold mb-2 text-text-high">移行計画</h3>
-                            <p class="text-sm text-text-muted">レガシーシステムからの段階的移行</p>
+                            <h3 class="font-bold mb-2 text-text-high">システム開発</h3>
+                            <p class="text-sm text-text-muted">Webベースのアプリケーション開発</p>
                         </div>
                     </div>
                     
                     <div class="flex flex-col sm:flex-row gap-4 justify-center">
                         <a href="mailto:infokensuke.n@gmail.com" class="glass-button px-8 py-4 rounded-full text-lg font-semibold inline-block">
                             メールで相談
+                        </a>
+                        <a href="https://www.linkedin.com/in/%E5%81%A5%E4%BB%8B-%E4%B8%AD%E6%BE%A4-407603224/" target="_blank" rel="noopener noreferrer" class="glass-card px-8 py-4 rounded-full text-lg font-semibold inline-block hover:scale-105 transition-transform">
+                            LinkedIn
+                        </a>
+                        <a href="https://x.com/kensuke__19" target="_blank" rel="noopener noreferrer" class="glass-card px-8 py-4 rounded-full text-lg font-semibold inline-block hover:scale-105 transition-transform">
+                            X
                         </a>
                         <a href="https://github.com/knakazawa99" target="_blank" rel="noopener noreferrer" class="glass-card px-8 py-4 rounded-full text-lg font-semibold inline-block hover:scale-105 transition-transform">
                             GitHub
@@ -578,9 +585,7 @@
 
     <!-- Fixed Footer CTA -->
     <div class="fixed bottom-6 right-6 z-50">
-        <button class="glass-button px-6 py-3 rounded-full text-sm font-medium shadow-lg hover:scale-110 transition-transform">
-            💬 相談する
-        </button>
+        <a href="index.html#contact" class="glass-button px-6 py-3 rounded-full text-sm font-medium shadow-lg hover:scale-110 transition-transform">💬相談する</a>
     </div>
 
     <!-- JavaScript for 3D Tilt and Parallax -->
