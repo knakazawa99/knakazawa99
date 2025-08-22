@@ -244,6 +244,37 @@
         .delay-400 { animation-delay: 0.4s; }
         .delay-500 { animation-delay: 0.5s; }
         
+        /* ナビゲーションリンクのスタイル */
+        .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+        }
+
+        .nav-link:hover {
+            color: #4CAF84;
+            background: rgba(76, 175, 132, 0.1);
+        }
+
+        .nav-link.active {
+            color: #4CAF84;
+            background: rgba(76, 175, 132, 0.15);
+            font-weight: 600;
+        }
+
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -0.25rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0.5rem;
+            height: 0.5rem;
+            background: #4CAF84;
+            border-radius: 50%;
+        }
+
         /* レスポンシブ調整 */
         @media (max-width: 768px) {
             .glass {
@@ -251,6 +282,10 @@
             }
             .particle {
                 display: none;
+            }
+            .nav-link {
+                padding: 0.25rem 0.5rem;
+                font-size: 0.875rem;
             }
         }
         
@@ -278,15 +313,16 @@
         <div class="particle" data-depth="0.4"></div>
     </div>
 
-    <!-- ナビゲーションヘッダー -->
+    <!-- 共通ヘッダー -->
     <header class="fixed top-0 left-0 right-0 z-50 glass backdrop-blur-md">
         <nav class="container mx-auto px-6 py-4">
             <div class="flex items-center justify-between">
-                <div class="text-xl font-bold text-accent">中澤健介</div>
+                <a href="index.html" class="text-xl font-bold text-accent">K.N</a>
                 <div class="hidden md:flex space-x-8">
-                    <a href="projects.html" class="hover:text-accent transition-colors">プロジェクト</a>
-                    <a href="skills.html" class="hover:text-accent transition-colors">スキル</a>
-                    <a href="personal-projects.html" class="hover:text-accent transition-colors">個人プロジェクト</a>
+                    <a href="index.html" class="nav-link" data-page="home">ホーム</a>
+                    <a href="projects.html" class="nav-link" data-page="projects">プロジェクト</a>
+                    <a href="personal-projects.html" class="nav-link" data-page="personal-projects">個人プロジェクト</a>
+                    <a href="skills.html" class="nav-link" data-page="skills">スキル</a>
                 </div>
                 <a href="index.html#contact" class="glass-button px-6 py-2 rounded-full text-sm font-medium hover:text-accent transition-colors">相談する</a>
             </div>
@@ -313,7 +349,7 @@
                     <a href="projects.html" class="glass-button px-8 py-4 rounded-full text-lg font-semibold hover:scale-105 transition-transform inline-block">
                         プロジェクト経験詳細
                     </a>
-                    <a href="skills.html" class="glass-card px-8 py-4 rounded-full text-lg font-semibold hover:scale-105 transition-transform inline-block">
+                    <a href="skills.html" class="glass-button px-8 py-4 rounded-full text-lg font-semibold hover:scale-105 transition-transform inline-block">
                         スキル詳細
                     </a>
                 </div>
@@ -366,9 +402,13 @@
                 </a>
             </div>
             
-            <div class="text-center mt-12">
+
+            <div class="flex flex-col sm:flex-row gap-6 justify-center mt-12">
                 <a href="projects.html" class="glass-button px-8 py-4 rounded-full text-lg font-semibold hover:scale-105 transition-transform inline-block">
-                    全てのプロジェクトを見る
+                    参画プロジェクトの詳細を見る
+                </a>
+                <a href="personal-projects.html" class="glass-button px-8 py-4 rounded-full text-lg font-semibold hover:scale-105 transition-transform inline-block">
+                    個人プロジェクト詳細を見る
                 </a>
             </div>
         </div>
@@ -431,15 +471,15 @@
     </section>
 
     <!-- Personal Projects Section -->
-    <section id="personal-projects" class="py-20 relative">
+    <!-- <section id="personal-projects" class="py-20 relative">
         <div class="container mx-auto px-6">
             <h2 class="text-4xl font-bold text-center mb-16 text-text-high">
                 <span class="text-accent">Personal</span> Projects
             </h2>
             
-            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto"> -->
                 <!-- OSS Contribution -->
-                <a href="personal-projects.html" class="glass-card p-8 rounded-2xl tilt-3d group hover:scale-105 transition-transform block">
+                <!-- <a href="personal-projects.html" class="glass-card p-8 rounded-2xl tilt-3d group hover:scale-105 transition-transform block">
                     <div class="text-center">
                         <div class="w-16 h-16 bg-accent/20 rounded-full flex items-center justify-center mx-auto mb-6">
                             <span class="text-3xl">🌟</span>
@@ -452,10 +492,10 @@
                             <span class="bg-primary/20 text-accent px-3 py-1 rounded-full text-sm">OSS</span>
                         </div>
                     </div>
-                </a>
+                </a> -->
 
                 <!-- Research Projects -->
-                <a href="personal-projects.html" class="glass-card p-8 rounded-2xl tilt-3d group hover:scale-105 transition-transform block">
+                <!-- <a href="personal-projects.html" class="glass-card p-8 rounded-2xl tilt-3d group hover:scale-105 transition-transform block">
                     <div class="text-center">
                         <div class="w-16 h-16 bg-accent/20 rounded-full flex items-center justify-center mx-auto mb-6">
                             <span class="text-3xl">🔬</span>
@@ -469,15 +509,15 @@
                         </div>
                     </div>
                 </a>
-            </div>
-            
+            </div> -->
+<!--             
             <div class="text-center mt-12">
                 <a href="personal-projects.html" class="glass-button px-8 py-4 rounded-full text-lg font-semibold hover:scale-105 transition-transform inline-block">
                     個人プロジェクト詳細を見る
                 </a>
-            </div>
-        </div>
-    </section>
+            </div> -->
+        <!-- </div>
+    </section> -->
 
     <!-- Career Highlights Section -->
     <section id="career" class="py-20 relative">
@@ -654,12 +694,32 @@
             });
         }
 
+        // 現在のページに基づいてナビゲーションリンクをアクティブにする
+        function initNavigation() {
+            let currentPage = window.location.pathname.split('/').pop().replace('.html', '') || 'home';
+            
+            // index.htmlの場合は'home'として扱う
+            if (currentPage === 'index' || currentPage === '') {
+                currentPage = 'home';
+            }
+            
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            navLinks.forEach(link => {
+                const page = link.getAttribute('data-page');
+                if (page === currentPage) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
         // Initialize all effects when DOM is loaded
         document.addEventListener('DOMContentLoaded', () => {
             initTilt3D();
             initParallax();
             initSmoothScroll();
             initScrollAnimations();
+            initNavigation();
         });
 
         // Performance optimization: Throttle scroll events

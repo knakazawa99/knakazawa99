@@ -120,6 +120,37 @@
             background: #4CAF84;
         }
         
+        /* ナビゲーションリンクのスタイル */
+        .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+        }
+
+        .nav-link:hover {
+            color: #4CAF84;
+            background: rgba(76, 175, 132, 0.1);
+        }
+
+        .nav-link.active {
+            color: #4CAF84;
+            background: rgba(76, 175, 132, 0.15);
+            font-weight: 600;
+        }
+
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -0.25rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0.5rem;
+            height: 0.5rem;
+            background: #4CAF84;
+            border-radius: 50%;
+        }
+
         /* レスポンシブ調整 */
         @media (max-width: 768px) {
             .glass {
@@ -127,6 +158,10 @@
             }
             .particle {
                 display: none;
+            }
+            .nav-link {
+                padding: 0.25rem 0.5rem;
+                font-size: 0.875rem;
             }
         }
         
@@ -151,19 +186,18 @@
         <div class="particle" data-depth="0.4"></div>
     </div>
 
-    <!-- ナビゲーションヘッダー -->
+    <!-- 共通ヘッダー -->
     <header class="fixed top-0 left-0 right-0 z-50 glass backdrop-blur-md">
         <nav class="container mx-auto px-6 py-4">
             <div class="flex items-center justify-between">
-                <div class="text-xl font-bold text-accent">中澤健介</div>
+                <a href="index.html" class="text-xl font-bold text-accent">K.N</a>
                 <div class="hidden md:flex space-x-8">
-                    <a href="index.html" class="hover:text-accent transition-colors">ホーム</a>
-                    <a href="projects.html" class="hover:text-accent transition-colors">プロジェクト</a>
-                    <a href="skills.html" class="hover:text-accent transition-colors">スキル</a>
+                    <a href="index.html" class="nav-link" data-page="home">ホーム</a>
+                    <a href="projects.html" class="nav-link" data-page="projects">プロジェクト</a>
+                    <a href="personal-projects.html" class="nav-link" data-page="personal-projects">個人プロジェクト</a>
+                    <a href="skills.html" class="nav-link" data-page="skills">スキル</a>
                 </div>
-                <button class="glass-button px-6 py-2 rounded-full text-sm font-medium">
-                    相談する
-                </button>
+                <a href="index.html#contact" class="glass-button px-6 py-2 rounded-full text-sm font-medium hover:text-accent transition-colors">相談する</a>
             </div>
         </nav>
     </header>
@@ -489,7 +523,7 @@
         </main>
     </div>
 
-    <!-- JavaScript for 3D Tilt Effect -->
+    <!-- JavaScript for 3D Tilt Effect and Navigation -->
     <script>
         // 3D Tilt Effect
         function initTilt3D() {
@@ -497,9 +531,29 @@
             console.log('3D Tilt effect disabled - using CSS hover effects instead');
         }
 
+        // 現在のページに基づいてナビゲーションリンクをアクティブにする
+        function initNavigation() {
+            let currentPage = window.location.pathname.split('/').pop().replace('.html', '') || 'home';
+            
+            // index.htmlの場合は'home'として扱う
+            if (currentPage === 'index' || currentPage === '') {
+                currentPage = 'home';
+            }
+            
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            navLinks.forEach(link => {
+                const page = link.getAttribute('data-page');
+                if (page === currentPage) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
         // Initialize when DOM is loaded
         document.addEventListener('DOMContentLoaded', () => {
             initTilt3D();
+            initNavigation();
         });
     </script>
 </body>
